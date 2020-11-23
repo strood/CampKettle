@@ -1,0 +1,32 @@
+// Base reset
+@import './vars';
+@import './base';
+
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+}
+
+nav {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  font-size: 32px;
+  .cartIconDiv {
+    flex-grow: 1;
+  }
+  .menuIconDiv {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    padding: 1% 2%;
+  }
+  .cartIconDiv {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    padding: 1% 2%;
+  }
+}
