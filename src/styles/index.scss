@@ -2,73 +2,72 @@
 @import './vars';
 @import './base';
 
+@import './components/home';
+@import './components/nav';
+
 html,
 body {
   width: 100%;
-  max-height: 100vh;
-  background-color: $pink;
-}
-
-.backgroundImg {
-  position: absolute;
-  top: 0;
-  left: 0;
   height: 100vh;
-  width: 100%;
-  z-index: 0;
+  background-color: white;
+  letter-spacing: $mainSpacing;
 }
-// .backgroundImg {
-//   position: absolute;
-//   min-height: 100vh;
-//   width: 100%;
-//   // height: auto;
-//   top: 0;
-//   left: 0;
-//   background: url('../img/camping-kettle-and-coffee-cup.jpg');
-//   -webkit-background-size: cover; /* Add in these */
-//   -moz-background-size: cover; /* four lines to */
-//   -o-background-size: cover; /* remove the white space*/
-//   background-size: cover; /* around images */
-// }
 
 #root {
   display: flex;
   flex-direction: column;
-}
-.main {
-  display: flex;
-  background: #0000005a;
-  flex: 1;
-  z-index: 1;
+  height: 100%;
 }
 
-nav {
+footer {
   display: flex;
-  width: 100%;
+  z-index: 1;
+  background-color: $white;
+}
+.footerTextDiv {
+  display: flex;
+  flex-direction: row;
+  flex: 3;
   justify-content: space-around;
-  font-size: 32px;
-  background: transparent;
-  z-index: 1;
-  .cartIconDiv {
-    flex-grow: 1;
+  border-right: 2px solid $blue;
+}
+.contactDiv {
+  display: flex;
+  flex-direction: column;
+  padding: 1em;
+  h4 {
+    margin: 1em;
   }
-  .menuIconDiv {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    padding: 0.75em 2em;
-  }
-  .cartIconDiv {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    padding: 0.75em 2em;
+  p {
+    padding: 0.1em;
+    color: $grey;
   }
 }
+.socialsDiv {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  color: $grey;
+  font-size: 42px;
+  flex: 1;
+}
 
-@media only screen and (max-width: 900px) {
-  .backgroundImg {
-    width: auto;
-    left: -550px;
+@media screen and (max-width: 850px) {
+  footer {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: none;
+  }
+  .footerTextDiv {
+    flex-direction: column;
+    border-bottom: 2px solid $blue;
+    border-right: 2px solid $white;
+    padding: 2em 0em;
+  }
+  .socialsDiv {
+    padding: 1em 0em;
+    justify-content: space-around;
+    width: 100%;
   }
 }

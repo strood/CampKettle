@@ -1,11 +1,26 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faArrowDown } from '@fortawesome/free-solid-svg-icons';
 
 export default function Navbar() {
   return (
     <nav>
+      <ul className='navList'>
+        <Link to='/'>
+          <li>Home</li>
+        </Link>
+        <Link to='/story'>
+          <li>Story</li>
+        </Link>
+        <Link to='/coffee'>
+          <li>Coffee</li>
+        </Link>
+
+        <Link to='/cart'>
+          <li>Cart</li>
+        </Link>
+      </ul>
       <div className='menuIconDiv'>
         <FontAwesomeIcon
           icon={faBars}
@@ -17,9 +32,10 @@ export default function Navbar() {
       </div>
 
       <div className='cartIconDiv'>
-        <Link to='/cart'>
-          <FontAwesomeIcon icon={faShoppingCart} />
-        </Link>
+        <FontAwesomeIcon
+          onClick={() => window.scrollTo(0, document.body.scrollHeight)}
+          icon={faArrowDown}
+        />
       </div>
     </nav>
   );

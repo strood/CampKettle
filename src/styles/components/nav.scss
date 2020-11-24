@@ -1,0 +1,54 @@
+@import '../vars';
+
+nav {
+  display: flex;
+  width: min(100%, 1200px);
+  justify-content: space-around;
+  font-size: 32px;
+  background-color: $white;
+  color: $grey;
+  z-index: 1;
+  border-bottom: 2px solid $blue;
+}
+.navList {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75em 2em;
+
+  li {
+    display: flex;
+    padding-left: 1em;
+    font-size: 24px;
+
+    &:hover {
+      color: $blue;
+      font-weight: 500;
+    }
+  }
+}
+.menuIconDiv {
+  display: none;
+  flex-direction: row;
+  justify-content: flex-start;
+  padding: 0.5em 2em;
+}
+.cartIconDiv {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: row;
+  justify-content: flex-end;
+  padding: 0.5em 2em;
+}
+
+@media screen and (max-width: 850px) {
+  .navList {
+    display: none;
+    li {
+      display: none;
+    }
+  }
+  .menuIconDiv {
+    display: flex;
+  }
+}
