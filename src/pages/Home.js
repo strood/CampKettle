@@ -1,9 +1,6 @@
 import React from 'react';
+import img from '../img/camping-kettle-and-coffee-cup.jpg';
 
 export default function Home() {
-  return (
-    <div>
-      <h1>Hello from home page!</h1>
-    </div>
-  );
+  return <main className='main'></main>;
 }

@@ -12,6 +12,7 @@ import Error from './pages/Error';
 // import components
 import Navbar from './components/Navbar';
 import SideMenu from './components/SideMenu';
+import BackgroundImg from './components/BackgroundImg';
 
 function App() {
   return (
