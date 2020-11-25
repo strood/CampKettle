@@ -21,11 +21,11 @@ export default function Home() {
             <h1>Our Focus</h1>
             <p>
               We are a Calgary based specialty coffee roaster, with a mission to
-              provide the finest and freshest quality coffee. Inspired by
-              traditional northern Italian coffee roasting methods, we roast to
-              insure a full-bodied profile with every cup. Anytime there is a
-              new fantastic crop, we feature them along side our six staple
-              regional coffees.
+              provide the finest and freshest quality coffee. Inspired by a fond
+              love of coffee, and the great outdoors, we roast to bring out a
+              distinct, full-bodied profile with every cup. Anytime you find
+              yourself out in natures, one of our six feature beans will make
+              you feel right at home.
             </p>
           </article>
         </div>

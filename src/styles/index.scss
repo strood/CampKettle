@@ -3,7 +3,11 @@
 @import './base';
 
 @import './components/home';
+@import './components/story';
 @import './components/nav';
+@import './components/backgroundImg';
+@import './components/headerImg';
+@import './components/footer';
 
 html,
 body {
@@ -17,57 +21,4 @@ body {
   display: flex;
   flex-direction: column;
   height: 100%;
-}
-
-footer {
-  display: flex;
-  z-index: 1;
-  background-color: $white;
-}
-.footerTextDiv {
-  display: flex;
-  flex-direction: row;
-  flex: 3;
-  justify-content: space-around;
-  border-right: 2px solid $blue;
-}
-.contactDiv {
-  display: flex;
-  flex-direction: column;
-  padding: 1em;
-  h4 {
-    margin: 1em;
-  }
-  p {
-    padding: 0.1em;
-    color: $grey;
-  }
-}
-.socialsDiv {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  color: $grey;
-  font-size: 42px;
-  flex: 1;
-}
-
-@media screen and (max-width: 850px) {
-  footer {
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: none;
-  }
-  .footerTextDiv {
-    flex-direction: column;
-    border-bottom: 2px solid $blue;
-    border-right: 2px solid $white;
-    padding: 2em 0em;
-  }
-  .socialsDiv {
-    padding: 1em 0em;
-    justify-content: space-around;
-    width: 100%;
-  }
 }

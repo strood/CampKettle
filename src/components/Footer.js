@@ -13,7 +13,7 @@ export default function Footer() {
         <div className='contactDiv'>
           <h4>Retail</h4>
           <a href='#'>
-            <p>7711 Macleod Trail SE,</p>
+            <p>2289 Macleod Trail NW,</p>
             <p>Calgary, Alberta</p>
           </a>
           <p>Store Hours</p>
@@ -23,7 +23,7 @@ export default function Footer() {
         <div className='contactDiv'>
           <h4>Wholesale</h4>
           <a href='#'>
-            <p>4806 1st street SW,</p>
+            <p>4533 2nd Street SW,</p>
             <p>Calgary, Alberta</p>
           </a>
           <p>Store Hours</p>
@@ -32,14 +32,14 @@ export default function Footer() {
         </div>
       </div>
       <div className='socialsDiv'>
-        <a href='www.twitter.com/_strood'>
+        <a href='https://www.twitter.com/_strood'>
           <FontAwesomeIcon icon={faTwitter} />
         </a>
-        <a href='www.twitter.com/_strood'>
+        <a href='https://www.twitter.com/_strood'>
           <FontAwesomeIcon icon={faFacebookF} />
         </a>
 
-        <a href='www.twitter.com/_strood'>
+        <a href='https://www.twitter.com/_strood'>
           <FontAwesomeIcon icon={faInstagram} />
         </a>
       </div>
