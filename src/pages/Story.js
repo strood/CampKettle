@@ -6,17 +6,16 @@ import Footer from '../components/Footer';
 import HeaderDiv from '../components/HeaderDiv';
 
 import img from '../img/warming-hands-on-campfire-coffee.jpg';
-// /home/strood/prog/odin/CampKettle/src/img/warming-hands-on-campfire-coffee.jpg
 
 export default function Story() {
   return (
     <>
       <HeaderImg />
-      <main className='story'>
+      <main className='main'>
         <HeaderDiv />
-        <div className='storyDiv'>
+        <div className='mainDiv'>
           <Navbar />
-          <article className='storyContent'>
+          <article className='mainContent'>
             <h1>Our Story</h1>
             <div className='storyImgDiv'>
               <img

@@ -1,5 +1,10 @@
 @import '../vars';
 
+.selected {
+  color: $blue;
+  font-weight: 500;
+}
+
 nav {
   display: flex;
   width: min(100%, 1200px);
@@ -10,6 +15,7 @@ nav {
   z-index: 1;
   border-bottom: 2px solid $blue;
 }
+
 .navList {
   display: flex;
   justify-content: space-between;
@@ -47,9 +53,7 @@ nav {
     }
   }
 }
-.hidden {
-  display: none;
-}
+
 .menuIconDiv {
   display: none;
   flex-direction: row;
@@ -61,12 +65,9 @@ nav {
     }
   }
 }
-.cartIconDiv {
-  display: flex;
+// spaces nav bar nicely
+.fillerDiv {
   flex-grow: 1;
-  flex-direction: row;
-  justify-content: flex-end;
-  padding: 0.5em 2em;
 }
 
 @media screen and (max-width: 850px) {

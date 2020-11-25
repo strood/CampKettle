@@ -1,31 +1,29 @@
 @import '../vars';
-@import './headerDiv.scss';
+@import '../components/headerDiv';
 
-.story {
+.main {
   display: flex;
   flex-direction: column;
   align-items: center;
   z-index: 1;
 }
-
-.storyDiv {
+.mainDiv {
   display: flex;
   flex-direction: column;
   height: 100%;
   align-items: center;
   background-color: $white;
   border-bottom: 2px solid $blue;
-  transition: var($mainTransition);
 }
 
-.storyContent {
+.mainContent {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
   width: min(80%, 800px);
-  padding: 5em 0em 0em 0em;
+  padding: 3em 0em 0em 0em;
 
   h1 {
     margin: 1em;
@@ -44,30 +42,19 @@
   }
 }
 
-.headerDiv {
-  height: 8em;
-}
-
-.storyImgDiv {
-  padding-bottom: 2em;
-}
-
 @media screen and (max-width: 850px) {
-  .story {
-    // padding-top: 55vh;
+  .main {
     padding-top: 1em;
   }
 }
 @media screen and (max-width: 414px) {
-  .story {
-    // padding-top: 55vh;
+  .main {
     padding-top: 5em;
   }
 }
 
 @media screen and (max-width: 384px) {
-  .story {
-    // padding-top: 55vh;
+  .main {
     padding-top: 8em;
   }
 }

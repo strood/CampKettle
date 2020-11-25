@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faArrowDown } from '@fortawesome/free-solid-svg-icons';
 
@@ -9,19 +9,19 @@ export default function Navbar() {
     <>
       <nav>
         <ul className='navList'>
-          <Link to='/'>
+          <NavLink exact to='/' activeClassName='selected'>
             <li>Home</li>
-          </Link>
-          <Link to='/story'>
+          </NavLink>
+          <NavLink to='/story' activeClassName='selected'>
             <li>Story</li>
-          </Link>
-          <Link to='/coffee'>
+          </NavLink>
+          <NavLink to='/coffee' activeClassName='selected'>
             <li>Coffee</li>
-          </Link>
+          </NavLink>
 
-          <Link to='/cart'>
+          <NavLink to='/cart' activeClassName='selected'>
             <li>Cart</li>
-          </Link>
+          </NavLink>
         </ul>
         <div className='menuIconDiv'>
           <FontAwesomeIcon
@@ -32,25 +32,22 @@ export default function Navbar() {
           />
         </div>
 
-        <div className='cartIconDiv'>
-          <FontAwesomeIcon icon={faArrowDown} />
-        </div>
+        <div className='fillerDiv'></div>
       </nav>
       {/* {showDropList && ( */}
       <ul className={showDropList ? 'navDropList' : 'navDropList hidden'}>
-        <Link to='/'>
+        <NavLink exact to='/' activeClassName='selected'>
           <li>Home</li>
-        </Link>
-        <Link to='/story'>
+        </NavLink>
+        <NavLink to='/story' activeClassName='selected'>
           <li>Story</li>
-        </Link>
-        <Link to='/coffee'>
+        </NavLink>
+        <NavLink to='/coffee' activeClassName='selected'>
           <li>Coffee</li>
-        </Link>
-
-        <Link to='/cart'>
+        </NavLink>
+        <NavLink to='/cart' activeClassName='selected'>
           <li>Cart</li>
-        </Link>
+        </NavLink>
       </ul>
       {/* )} */}
     </>

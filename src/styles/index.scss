@@ -2,12 +2,16 @@
 @import './vars';
 @import './base';
 
-@import './components/home';
-@import './components/story';
+//main is basic main layour, pages customize over
+@import './components/main';
+
 @import './components/nav';
 @import './components/backgroundImg';
 @import './components/headerImg';
 @import './components/footer';
+
+@import './pages/home';
+@import './pages/story';
 
 html,
 body {
@@ -21,4 +25,7 @@ body {
   display: flex;
   flex-direction: column;
   height: 100%;
+}
+.hidden {
+  display: none;
 }
