@@ -1,10 +1,11 @@
 @import '../vars';
+@import './headerDiv.scss';
 
 .home {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 35em;
+  padding-top: 43em;
   z-index: 1;
 }
 
@@ -25,7 +26,7 @@
   align-items: center;
   text-align: center;
   width: min(80%, 800px);
-  padding: 5em 0em 0em 0em;
+  padding: 5em 0em 5em 0em;
 
   h1 {
     margin: 1em;
@@ -35,27 +36,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-  }
-}
-
-.headerDiv {
-  display: flex;
-  width: 100%;
-  height: 15em;
-  font-size: 26px;
-  justify-content: center;
-  z-index: 1;
-  background: #cecece05;
-  background: -moz-linear-gradient(top, transparent 0%, #00000096 100%);
-  background: -webkit-linear-gradient(top, transparent 0%, #00000096 100%);
-  background: linear-gradient(to bottom, transparent 0%, #00000096 100%);
-  div {
-    width: min(98%, 1100px);
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    color: white;
-    font-family: 'Palatino Linotype';
   }
 }
 

@@ -8,18 +8,15 @@ import Cart from './pages/Cart';
 import AllCoffee from './pages/AllCoffee';
 import SingleCoffee from './pages/SingleCoffee.js';
 import Error from './pages/Error';
-import Footer from './components/Footer';
 
 // import components
 
-// Force scroll to top
-window.onbeforeunload = function () {
-  window.scrollTo(0, 0);
-};
+import ScrollToTop from './components/ScrollToTop';
 
 function App() {
   return (
     <Router>
+      <ScrollToTop />
       <Switch>
         <Route exact path='/'>
           <Home />

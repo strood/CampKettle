@@ -2,6 +2,11 @@ footer {
   display: flex;
   z-index: 1;
   background-color: $white;
+  a {
+    &:hover {
+      color: $blue;
+    }
+  }
 }
 .footerTextDiv {
   display: flex;
@@ -20,6 +25,13 @@ footer {
   p {
     padding: 0.1em;
     color: $grey;
+  }
+  a {
+    p {
+      &:hover {
+        color: $blue;
+      }
+    }
   }
 }
 .socialsDiv {
