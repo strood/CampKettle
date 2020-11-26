@@ -29,6 +29,9 @@ export default function SingleCoffee({
   const handleChange = (e) => {
     setQtyVal(e.target.value);
   };
+  const addtoCart = (e) => {
+    console.log(e);
+  };
 
   const className = img.prefix + '-' + img.iconName;
 
@@ -96,7 +99,9 @@ export default function SingleCoffee({
             </div>
           </div>
         </div>
-        <button className='addCartBtn'>Add To Cart</button>
+        <button className='addCartBtn' onClick={(e) => addtoCart(e)}>
+          Add To Cart
+        </button>
       </div>
     </div>
   );
