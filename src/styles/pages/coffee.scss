@@ -2,7 +2,221 @@
 
 .singleCoffeeDiv {
   display: flex;
-  //   background-color: $grey;
-  outline: 1px solid $grey;
+  border: 1px solid $grey;
+  background-color: $darkWhite;
   margin: 1em;
+  justify-content: space-evenly;
+  min-height: 22em;
+  border-radius: 0.3em;
+}
+
+.coffeeLeft,
+.coffeeMid,
+.coffeeRight {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+// Coffee profile sections
+.coffeeLeft {
+  justify-content: space-around;
+  flex: 1;
+}
+.coffeeMid {
+  flex: 2;
+}
+.coffeeRight {
+  flex: 1;
+}
+
+// Coffee Profile left components
+
+.nameDiv {
+  flex: 1;
+}
+.imgHolder {
+  flex: 2;
+}
+.imgDiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 45px;
+  border-radius: 50%;
+  border: 2px solid;
+  height: 2em;
+  width: 2em;
+  margin-bottom: 3%;
+}
+// Coffee Profile Mid compoenents
+.topInfoDiv {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.locationDiv,
+.roastDiv {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  flex: 1;
+  font-size: 12px;
+  // height: 22em
+  p {
+    display: flex;
+    flex-direction: column;
+  }
+  svg {
+    margin: 0.5em 0em;
+    font-size: 38px;
+  }
+}
+
+.fillDiv {
+  display: flex;
+  flex: 0.3;
+}
+
+.notesDiv,
+.aromaDiv {
+  display: flex;
+  flex-direction: column;
+  div {
+    display: flex;
+    margin-bottom: 0.5em;
+    margin-left: 1em;
+  }
+}
+
+// Coffee Profile Right side components
+
+.priceDiv {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.qtyDiv {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  flex: 1;
+  label {
+    margin-bottom: 0.5%;
+    font-size: 13px;
+  }
+}
+
+.qtyPlusBtn,
+.qtyMinusBtn {
+  font-size: 32px;
+  background-color: $darkWhite;
+}
+
+.qtyPlusBtn {
+  &:hover {
+    color: $green;
+  }
+}
+.qtyMinusBtn {
+  &:hover {
+    color: $red;
+  }
+}
+
+.qtyInputDiv {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 7em;
+  border-radius: 2em;
+}
+
+.qtyBtnDiv {
+  display: flex;
+  flex-direction: column;
+}
+.qtyInput {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 3em;
+  height: 2.5em;
+  border: 1px solid $blue;
+  border-radius: 0.3em;
+}
+
+.addCartBtn {
+  font-size: 18px;
+  border: 1px solid $grey;
+  padding: 0.5em;
+  border-radius: 0.2em;
+  margin-bottom: 2em;
+  &:hover {
+    background-color: $blue;
+    color: white;
+  }
+}
+.subnote {
+  border-top: 0.1em dotted $blue;
+  margin-top: 1em;
+  padding: 1em;
+  font-size: 12px;
+}
+
+// Coffee Colors
+.fas-water {
+  color: $wavyBlue;
+}
+.fas-dove {
+  color: $birdOrange;
+}
+.fas-paw {
+  color: $trailPurp;
+}
+.fas-mountain {
+  color: $mountBrown;
+}
+.fas-sun {
+  color: $sunYellow;
+}
+.fa-fire-alt {
+  color: $fireRed;
+}
+.fa-globe {
+  color: $blue;
+}
+.fab-pagelines {
+  color: $natureGreen;
+}
+
+@media screen and (max-width: 1025px) {
+  .singleCoffeeDiv {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+  }
+  .addCartBtn {
+    margin-top: 1em;
+    margin-bottom: 1em;
+  }
+  .bottomInfoDiv {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .fillDiv {
+    display: none;
+  }
+  .notesDiv,
+  .aromaDiv {
+    max-width: 80%;
+  }
 }

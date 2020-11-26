@@ -24,6 +24,7 @@ export default function Story() {
                 className='storyImg'
               />
             </div>
+            <hr className='topHr' />
             <p>
               Lorem ipsum dolor sit amet, consectetur adipisicing elit.
               Praesentium deserunt quidem dolor pariatur est autem eaque in sunt
@@ -49,6 +50,7 @@ export default function Story() {
               <a href='https://www.github.com/strood'>Strood</a> You can check
               out some of my other projects by following the link!
             </p>
+            <hr className='bottomHr' />
             Photos by{' '}
             <a href='https://burst.shopify.com/@shopifypartners?utm_campaign=photo_credit&amp;utm_content=Free+Camping+Kettle+And+Coffee+Cup+Photo+%E2%80%94+High+Res+Pictures&amp;utm_medium=referral&amp;utm_source=credit'>
               Shopify Partners

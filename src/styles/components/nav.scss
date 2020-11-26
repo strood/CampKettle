@@ -30,7 +30,7 @@ nav {
     &:hover {
       color: $blue;
       font-weight: 500;
-      text-decoration: underline;
+      // text-decoration: underline;
     }
   }
 }
@@ -41,23 +41,22 @@ nav {
   align-items: center;
   border-bottom: 2px solid $blue;
   width: 100%;
-  -webkit-transition: slide 0.5s ease-in;
-  -moz-transition: slide 0.5s ease-in;
-  -o-transition: slide 0.5s ease-in;
-  -ms-transition: slide 0.5s ease-in;
-  transition: slide 0.5s ease-in;
 
   li {
     display: flex;
     padding: 0.5em 0em;
     font-size: 24px;
-    animation: appear 500ms ease-out forwards;
+
     &:hover {
       color: $blue;
       font-weight: 500;
       text-decoration: underline;
     }
   }
+}
+
+.shrunk {
+  display: none;
 }
 
 .menuIconDiv {

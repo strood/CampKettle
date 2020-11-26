@@ -11,7 +11,7 @@ const coffeeStock = [
   {
     id: 1,
     name: 'Good Morning',
-    price: 17.99,
+    price: 10.99,
     img: faSun,
     location: 'Indonesia, Central & South America',
     roast: 'Light',
@@ -22,9 +22,9 @@ const coffeeStock = [
   {
     id: 2,
     name: 'Wavy Baby',
-    price: 17.99,
+    price: 9.99,
     img: faWater,
-    location: 'Africa, Indonesia, Central & South America',
+    location: 'Central & South America',
     roast: 'Medium',
     aroma: 'Sweet dried fruit, toasted coconut, and chocolate malt.',
     notes:
@@ -34,7 +34,7 @@ const coffeeStock = [
   {
     id: 3,
     name: 'Natures Bounty',
-    price: 18.99,
+    price: 10.99,
     img: faPagelines,
     location: 'Indonesia, Central & South America',
     roast: 'Light',
@@ -45,9 +45,9 @@ const coffeeStock = [
   {
     id: 4,
     name: 'Take Flight',
-    price: 18.99,
+    price: 10.99,
     img: faDove,
-    location: 'Africa, Indonesia, Central & South America',
+    location: 'Africa, Central & South America',
     roast: 'Medium',
     aroma: 'Sweet syrup, vanilla bean, stone fruit.',
     notes:
@@ -57,7 +57,7 @@ const coffeeStock = [
   {
     id: 5,
     name: 'Trail Brew',
-    price: 17.99,
+    price: 9.99,
     img: faPaw,
     location: 'Indonesia, Central & South America',
     roast: 'Dark',
@@ -69,7 +69,7 @@ const coffeeStock = [
   {
     id: 6,
     name: 'Bold Buttress',
-    price: 19.99,
+    price: 10.99,
     img: faMountain,
     location: 'Central & South America',
     roast: 'Dark',

@@ -34,22 +34,21 @@ export default function Navbar() {
 
         <div className='fillerDiv'></div>
       </nav>
-      {showDropList && (
-        <ul className='navDropList'>
-          <NavLink exact to='/' activeClassName='selected'>
-            <li>Home</li>
-          </NavLink>
-          <NavLink to='/story' activeClassName='selected'>
-            <li>Story</li>
-          </NavLink>
-          <NavLink to='/coffee' activeClassName='selected'>
-            <li>Coffee</li>
-          </NavLink>
-          <NavLink to='/cart' activeClassName='selected'>
-            <li>Cart</li>
-          </NavLink>
-        </ul>
-      )}
+
+      <ul className={showDropList ? 'navDropList' : 'navDropList shrunk'}>
+        <NavLink exact to='/' activeClassName='selected'>
+          <li>Home</li>
+        </NavLink>
+        <NavLink to='/story' activeClassName='selected'>
+          <li>Story</li>
+        </NavLink>
+        <NavLink to='/coffee' activeClassName='selected'>
+          <li>Coffee</li>
+        </NavLink>
+        <NavLink to='/cart' activeClassName='selected'>
+          <li>Cart</li>
+        </NavLink>
+      </ul>
     </>
   );
 }

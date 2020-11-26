@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faWater,
@@ -8,6 +8,8 @@ import {
   faSun,
   faFireAlt,
   faGlobe,
+  faPlusSquare,
+  faMinusSquare,
 } from '@fortawesome/free-solid-svg-icons';
 import { faPagelines } from '@fortawesome/free-brands-svg-icons';
 
@@ -21,23 +23,34 @@ export default function SingleCoffee({
   aroma,
   notes,
   amount,
+  color,
 }) {
+  const [qtyVal, setQtyVal] = useState('0');
+  const handleChange = (e) => {
+    setQtyVal(e.target.value);
+  };
+
+  const className = img.prefix + '-' + img.iconName;
+
   return (
     <div className='singleCoffeeDiv'>
       <div className='coffeeLeft'>
         <div className='nameDiv'>
           <h1 className='coffeeName'>{name}</h1>
         </div>
-        <div className='imgDiv'>
-          <FontAwesomeIcon icon={img} />
+        <div className='imgHolder'>
+          <div className={`imgDiv ${className}`}>
+            <FontAwesomeIcon icon={img} />
+          </div>
         </div>
       </div>
       <div className='coffeeMid'>
         <div className='topInfoDiv'>
           <div className='roastDiv'>
             <FontAwesomeIcon icon={faFireAlt} />
-            <p>{roast}</p>
+            <p>{roast} roast</p>
           </div>
+          <div className='fillDiv'></div>
           <div className='locationDiv'>
             <FontAwesomeIcon icon={faGlobe} />
             <p>{location}</p>
@@ -45,28 +58,45 @@ export default function SingleCoffee({
         </div>
         <div className='bottomInfoDiv'>
           <div className='aromaDiv'>
+            <div>
+              <h3>Aroma:</h3>
+            </div>
             <p>{aroma}</p>
           </div>
           <div className='notesDiv'>
+            <div>
+              <h3>Tasting Notes:</h3>
+            </div>
             <p>{notes}</p>
           </div>
         </div>
       </div>
       <div className='coffeeRight'>
         <div className='priceDiv'>
-          <h2 className='coffeePrice'>{price}</h2>
+          <h2 className='coffeePrice'>${price}</h2>
+          <p className='subnote'>454g Bag</p>
         </div>
-        <div className='subnote'>
-          <p>454g (1lb) Bag</p>
-        </div>
+
         <div className='qtyDiv'>
-          <button className='qtyPlusBtn'>+</button>
+          <label htmlFor='qtyInput'>Qty:</label>
           <div className='qtyInputDiv'>
-            <label htmlFor='qutInput'>Amt:</label>
-            <input className='qtyInput' type='text' />
+            <input
+              className='qtyInput'
+              type='text'
+              placeholder={qtyVal}
+              onChange={handleChange}
+            />
+            <div className='qtyBtnDiv'>
+              <button className='qtyPlusBtn'>
+                <FontAwesomeIcon icon={faPlusSquare} />
+              </button>
+              <button className='qtyMinusBtn'>
+                <FontAwesomeIcon icon={faMinusSquare} />
+              </button>
+            </div>
           </div>
-          <button className='qtyMinusBtn'>-</button>
         </div>
+        <button className='addCartBtn'>Add To Cart</button>
       </div>
     </div>
   );

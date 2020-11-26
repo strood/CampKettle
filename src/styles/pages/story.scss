@@ -2,5 +2,18 @@
 @import '../components/headerDiv';
 
 .storyImgDiv {
-  padding-bottom: 2em;
+  margin-bottom: 2em;
+
+  img {
+    border-radius: 0.3em;
+  }
+}
+
+hr {
+  color: $blue;
+  width: 100%;
+  margin-bottom: 2em;
+}
+.bottomHr {
+  width: 60%;
 }
