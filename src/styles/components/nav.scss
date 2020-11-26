@@ -41,11 +41,17 @@ nav {
   align-items: center;
   border-bottom: 2px solid $blue;
   width: 100%;
+  -webkit-transition: slide 0.5s ease-in;
+  -moz-transition: slide 0.5s ease-in;
+  -o-transition: slide 0.5s ease-in;
+  -ms-transition: slide 0.5s ease-in;
+  transition: slide 0.5s ease-in;
+
   li {
     display: flex;
     padding: 0.5em 0em;
     font-size: 24px;
-
+    animation: appear 500ms ease-out forwards;
     &:hover {
       color: $blue;
       font-weight: 500;
@@ -85,5 +91,29 @@ nav {
 @media screen and (min-width: 850px) {
   .navDropList {
     display: none;
+  }
+}
+@keyframes slide {
+  from {
+    // opacity: 0;
+    transform: translateX(150px);
+  }
+  to {
+    // opacity: 1;
+    transform: translateX(0px);
+  }
+}
+@keyframes appear {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(0.7);
+  }
+  75% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1);
   }
 }

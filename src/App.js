@@ -6,7 +6,6 @@ import Story from './pages/Story';
 import Home from './pages/Home';
 import Cart from './pages/Cart';
 import AllCoffee from './pages/AllCoffee';
-import SingleCoffee from './pages/SingleCoffee.js';
 import Error from './pages/Error';
 
 // import components
@@ -24,14 +23,11 @@ function App() {
         <Route path='/story'>
           <Story />
         </Route>
-        <Route path='/cart'>
-          <Cart />
-        </Route>
-        <Route exact path='/coffee'>
+        <Route path='/coffee'>
           <AllCoffee />
         </Route>
-        <Route path='/coffee/:id'>
-          <SingleCoffee />
+        <Route path='/cart'>
+          <Cart />
         </Route>
         <Route path='*'>
           <Error />
