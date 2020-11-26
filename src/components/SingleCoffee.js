@@ -40,6 +40,7 @@ export default function SingleCoffee({
       <div className='coffeeLeft'>
         <div className='nameDiv'>
           <h1 className='coffeeName'>{name}</h1>
+          <hr />
         </div>
         <div className='imgHolder'>
           <div className={`imgDiv ${className}`}>

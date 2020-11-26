@@ -37,6 +37,7 @@ export default function CartItem({ id, name, price, img, amt }) {
       <div className='cartItemInfoDiv'>
         <div className='cartNameDiv'>
           <h4>{name}</h4>
+          <hr />
           <button onClick={(e) => updateCartItem(e, 0)}>Remove</button>
         </div>
         <div className='cartQtyDiv'>

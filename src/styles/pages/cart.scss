@@ -45,9 +45,15 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
   flex: 1;
   //   max-width: 7em;
+  hr {
+    margin: 0;
+    width: 80%;
+    margin-top: 0.8em;
+    margin-bottom: 1.5em;
+  }
   button {
     background-color: $darkWhite;
     font-size: 15px;
@@ -203,5 +209,17 @@
   }
   .cartItemImgDiv {
     margin-left: 2%;
+  }
+  .cartItemInfoDiv {
+    height: 90%;
+  }
+  .cartItemPrice {
+    flex: 0;
+  }
+  .cartNameDiv {
+    hr {
+      margin-top: 0.8em;
+      margin-bottom: 0.9em;
+    }
   }
 }
