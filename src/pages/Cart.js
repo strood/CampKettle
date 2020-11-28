@@ -11,7 +11,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
 
 export default function Cart() {
-  const { cart, loading, total } = useGlobalContext();
+  const { cart, total } = useGlobalContext();
   console.log(cart);
   if (cart.length === 0) {
     return (

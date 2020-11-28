@@ -88,6 +88,13 @@
     }
   }
 }
+.cartQtyHolder {
+  .lowStockNote {
+    margin-top: 1em;
+    margin-bottom: 0em;
+    font-size: 12px;
+  }
+}
 .cartItemPrice {
   display: flex;
   flex-direction: column;
@@ -168,21 +175,20 @@
 }
 
 @media screen and (max-width: 950px) {
-  //   .cartItemInfoDiv {
-  //     flex-direction: column;
-  //   }
-
   .cartItem {
     width: auto;
   }
 }
 
 @media screen and (max-width: 860px) {
+  .cartQtyHolder {
+    margin: 1em 0em;
+  }
   .cartItemInfoDiv {
     flex-direction: column;
   }
   .cartItem {
-    height: 18em;
+    height: 20em;
     width: 35em;
     //   width: 850px;
     justify-content: space-around;

@@ -17,6 +17,14 @@ const getLocalCart = () => {
 };
 
 const localCart = getLocalCart();
+
+const getStock = () => {
+  //Just storing a copy for each person, not actual db fetch to keep live stock.
+  let stock = coffeeStock;
+  return stock;
+};
+
+// These for testing, coffeeStock below it
 // const localCart = [];
 // const localCart = [
 //   {
@@ -67,7 +75,7 @@ const coffeeStock = [
     roast: 'Light',
     aroma: 'Ripe berries, rich nougat, brown sugar.',
     notes: 'Juicy red fruit acidity paired with a creamy honey body.',
-    stock: 15,
+    itemStock: 1,
   },
   {
     id: 2,
@@ -79,7 +87,7 @@ const coffeeStock = [
     aroma: 'Sweet dried fruit, toasted coconut, and chocolate malt.',
     notes:
       'Well-rounded and complex with notes of sweet tobacco, stone fruit and cocoa.',
-    stock: 15,
+    itemStock: 15,
   },
   {
     id: 3,
@@ -90,7 +98,7 @@ const coffeeStock = [
     roast: 'Light',
     aroma: 'Earthy, anise, molasses.',
     notes: 'Tropical dried fruit, creamy, cola and walnut undertones.',
-    stock: 10,
+    itemStock: 10,
   },
   {
     id: 4,
@@ -102,7 +110,7 @@ const coffeeStock = [
     aroma: 'Sweet syrup, vanilla bean, stone fruit.',
     notes:
       'Tart red currant, notes of sugar cane and milk chocolate, with a honeyed berry body.',
-    stock: 9,
+    itemStock: 9,
   },
   {
     id: 5,
@@ -114,7 +122,7 @@ const coffeeStock = [
     aroma: 'Condensed sugar cane and cocoa powder.',
     notes:
       'Rich, dark chocolate, cacao nibs, brown sugar and roasted hazelnut.',
-    stock: 7,
+    itemStock: 7,
   },
   {
     id: 6,
@@ -125,8 +133,8 @@ const coffeeStock = [
     roast: 'Dark',
     aroma: 'Cacao nibs, peat, and hints of nutmeg.',
     notes: 'Heavy body, sweet tobacco, earthy with a black licorice finish.',
-    stock: 7,
+    itemStock: 7,
   },
 ];
 
-export { coffeeStock, localCart };
+export { getStock, getLocalCart };

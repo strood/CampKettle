@@ -9,8 +9,7 @@ import SingleCoffee from '../components/SingleCoffee';
 import { useGlobalContext } from '../context';
 
 export default function AllCoffee() {
-  const { coffeeStock } = useGlobalContext();
-  console.log(coffeeStock);
+  const { stock } = useGlobalContext();
   return (
     <>
       <HeaderImg />
@@ -20,7 +19,7 @@ export default function AllCoffee() {
           <Navbar />
           <article className='mainContent'>
             <h1>Our Coffee</h1>
-            {coffeeStock.map((coffee) => {
+            {stock.map((coffee) => {
               return <SingleCoffee key={coffee.id} {...coffee} />;
             })}
           </article>

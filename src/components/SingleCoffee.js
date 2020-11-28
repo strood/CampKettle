@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faFireAlt,
@@ -9,6 +9,17 @@ import {
 
 import { useGlobalContext } from '../context';
 
+const getCartTotal = (id, cart) => {
+  let item = cart.filter((cartItem) => cartItem.id === id);
+  console.log('ITEM');
+  console.log(item);
+  if (item[0]) {
+    return item[0].amt;
+  } else {
+    return 0;
+  }
+};
+
 export default function SingleCoffee({
   id,
   name,
@@ -18,28 +29,52 @@ export default function SingleCoffee({
   roast,
   aroma,
   notes,
-  stock,
+  itemStock,
 }) {
-  const { toggleAmount, setModalStatus, toggleModal } = useGlobalContext();
+  const { adjustAmount, toggleModal, cart } = useGlobalContext();
   const [qtyVal, setQtyVal] = useState(0);
+  const [lowStock, setLowStock] = useState(false);
+
+  const [cartTotal, setCartTotal] = useState(getCartTotal(id, cart));
 
   const handleChange = (e) => {
-    console.log(e.target.value);
     setQtyVal(e.target.value);
   };
 
+  const toggleBadValue = () => {
+    let input = document.querySelector(`#qtyInput${id}`);
+    let note = document.querySelector(`#lowStockNote${id}`);
+
+    input.style.border = '1px solid red';
+    note.style.color = 'red';
+    setTimeout(() => {
+      input.style.border = '1px solid blue';
+      input.value = 0;
+    }, 2000);
+  };
+
   const addtoCart = () => {
-    console.log(typeof qtyVal);
     if (qtyVal > 0) {
-      toggleAmount(id, 'add', name, price, img, parseInt(qtyVal));
-      toggleModal(true, 'added');
-      // setModalStatus(true);
+      if (qtyVal > itemStock - cartTotal) {
+        setLowStock(true);
+        toggleBadValue();
+      } else {
+        adjustAmount(id, 'add', name, price, img, parseInt(qtyVal));
+        setCartTotal(cartTotal + parseInt(qtyVal));
+        toggleModal(true, 'added');
+        setQtyVal(0);
+      }
     }
-    setQtyVal(0);
   };
 
   const incQtyVal = () => {
-    setQtyVal(qtyVal + 1);
+    console.log(cartTotal);
+    if (qtyVal < itemStock - cartTotal) {
+      setQtyVal(qtyVal + 1);
+    } else {
+      setLowStock(true);
+      toggleBadValue();
+    }
   };
 
   const decQtyVal = () => {
@@ -51,6 +86,12 @@ export default function SingleCoffee({
   };
 
   const className = img.prefix + '-' + img.iconName;
+
+  useEffect(() => {
+    if (itemStock < 5) {
+      setLowStock(true);
+    }
+  }, []);
 
   return (
     <div className='singleCoffeeDiv'>
@@ -102,7 +143,8 @@ export default function SingleCoffee({
           <label htmlFor='qtyInput'>Qty:</label>
           <div className='qtyInputDiv'>
             <input
-              className='qtyInput'
+              id={`qtyInput${id}`}
+              className={`qtyInput`}
               type='number'
               value={qtyVal}
               onChange={handleChange}
@@ -117,6 +159,19 @@ export default function SingleCoffee({
             </div>
           </div>
         </div>
+        {lowStock && (
+          <p id={`lowStockNote${id}`} className='lowStockNote'>
+            Only {itemStock} remaining!
+          </p>
+        )}
+        {cartTotal > 0 && <p className='lowStockNote'>{cartTotal} in cart.</p>}
+        {/* <p
+          id={`lowStockNote${id}`}
+          className={lowStock ? `lowStockNote` : 'lowStockNote hidden'}
+        >
+          Only {itemStock} remaining!
+        </p> */}
+
         <button className='addCartBtn' onClick={(e) => addtoCart()}>
           Add To Cart
         </button>

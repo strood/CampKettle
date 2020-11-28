@@ -1,10 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useGlobalContext } from '../context';
 
+const getItemStock = (id, stock) => {
+  let item = stock.filter((item) => item.id === id);
+  return item[0].itemStock;
+};
+
 export default function CartItem({ id, name, price, img, amt }) {
-  const { toggleAmount, toggleModal } = useGlobalContext();
+  const { adjustAmount, toggleModal, stock } = useGlobalContext();
   const [qtyVal, setQtyVal] = useState(amt);
+  const [lowStock, setLowStock] = useState(false);
+  const itemStock = getItemStock(id, stock);
 
   const className = img.prefix + '-' + img.iconName;
 
@@ -12,12 +19,39 @@ export default function CartItem({ id, name, price, img, amt }) {
     setQtyVal(e.target.value);
   };
 
+  const toggleBadValue = () => {
+    let input = document.querySelector(`#qtyInput${id}`);
+    let note = document.querySelector(`#lowStockNote${id}`);
+
+    input.style.border = '1px solid red';
+    if (lowStock) {
+      note.style.color = 'red';
+    }
+    setTimeout(() => {
+      input.style.border = '1px solid blue';
+      setQtyVal(amt);
+      input.value = amt;
+    }, 2000);
+  };
+
   const removeItem = () => {
     toggleModal(true, 'remove', id);
   };
+
   const setQty = () => {
-    toggleAmount(id, 'set', name, price, img, parseInt(qtyVal));
+    if (qtyVal <= itemStock) {
+      adjustAmount(id, 'set', name, price, img, parseInt(qtyVal));
+    } else {
+      setLowStock(true);
+      toggleBadValue();
+    }
   };
+
+  useEffect(() => {
+    if (itemStock < 5) {
+      setLowStock(true);
+    }
+  }, []);
 
   return (
     <div className='cartItem'>
@@ -30,15 +64,23 @@ export default function CartItem({ id, name, price, img, amt }) {
           <hr />
           <button onClick={() => removeItem(id)}>Remove</button>
         </div>
-        <div className='cartQtyDiv'>
-          <label htmlFor='qtyInput'>Qty:</label>
-          <input
-            className='qtyInput'
-            type='number'
-            value={qtyVal}
-            onChange={handleChange}
-          />
-          <button onClick={() => setQty()}>Update</button>
+        <div className='cartQtyHolder'>
+          <div className='cartQtyDiv'>
+            <label htmlFor='qtyInput'>Qty:</label>
+            <input
+              id={`qtyInput${id}`}
+              className='qtyInput'
+              type='number'
+              value={qtyVal}
+              onChange={handleChange}
+            />
+            <button onClick={() => setQty()}>Update</button>
+          </div>
+          {lowStock && (
+            <p id={`lowStockNote${id}`} className='lowStockNote'>
+              Only {itemStock} remaining
+            </p>
+          )}
         </div>
         <div className='cartItemPrice'>
           <div>

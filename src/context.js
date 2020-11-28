@@ -1,12 +1,13 @@
-import React, { useState, useContext, useEffect, useReducer } from 'react';
-import { coffeeStock, localCart } from './data';
+import React, { useContext, useEffect, useReducer } from 'react';
+import { getStock, getLocalCart } from './data';
 import reducer from './reducer';
 
 const AppContext = React.createContext();
 
 const initialState = {
   loading: false,
-  cart: localCart,
+  cart: [],
+  stock: [],
   modal: false,
   modalType: null,
   modalId: 0,
@@ -25,13 +26,9 @@ const AppProvider = ({ children }) => {
     dispatch({ type: 'TOGGLE_MODAL', payload: { val, type, id } });
   };
 
-  const toggleAmount = (id, action, name, price, img, value = 0) => {
-    console.log('TOGGLE AMT --- ID, Action, Value');
-    console.log(id);
-    console.log(action);
-    console.log(value);
+  const adjustAmount = (id, action, name, price, img, value = 0) => {
     dispatch({
-      type: 'TOGGLE_AMOUNT',
+      type: 'ADJUST_AMOUNT',
       payload: { id, action, name, price, img, value },
     });
   };
@@ -40,9 +37,10 @@ const AppProvider = ({ children }) => {
     dispatch({ type: 'LOADING' });
     // const response = await fetch(url);
     // const cart = await response.json();
-    // just a local fetch, but generally asyc from external source
-    // const cart = localStorage.getItem('cart');
-    dispatch({ type: 'DISPLAY_ITEMS', payload: state.cart });
+    // just a local fetch imitation, but generally asyc from external source like above
+    const cart = getLocalCart();
+    const stock = getStock();
+    dispatch({ type: 'DISPLAY_ITEMS', payload: { cart, stock } });
   };
 
   useEffect(() => {
@@ -59,9 +57,8 @@ const AppProvider = ({ children }) => {
       value={{
         ...state,
         remove,
-        toggleAmount,
+        adjustAmount,
         toggleModal,
-        coffeeStock,
       }}
     >
       {children}

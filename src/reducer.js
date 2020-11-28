@@ -19,7 +19,7 @@ export default function reducer(state, action) {
     };
   }
 
-  if (action.type === 'TOGGLE_AMOUNT') {
+  if (action.type === 'ADJUST_AMOUNT') {
     let isInCart = false;
 
     let tempCart = state.cart
@@ -51,17 +51,23 @@ export default function reducer(state, action) {
       tempCart = [...tempCart, { id, name, price, img, amt: value }];
     }
 
-    return { state, cart: tempCart };
+    return { ...state, cart: tempCart };
   }
 
   if (action.type === 'LOADING') {
     return { ...state, loading: true };
   }
   if (action.type === 'DISPLAY_ITEMS') {
-    return { ...state, cart: action.payload, loading: false };
+    return {
+      ...state,
+      cart: action.payload.cart,
+      stock: action.payload.stock,
+      loading: false,
+    };
   }
 
   if (action.type === 'GET_TOTALS') {
+    console.log(state);
     let { total, amount } = state.cart.reduce(
       (cartTotal, cartItem) => {
         const { price, amt } = cartItem;
