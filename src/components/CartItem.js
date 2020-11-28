@@ -28,7 +28,10 @@ export default function CartItem({ id, name, price, img, amt }) {
       note.style.color = 'red';
     }
     setTimeout(() => {
-      input.style.border = '1px solid blue';
+      if (note) {
+        note.style.color = '#363b3b';
+      }
+      input.style.border = '1px solid #4481a6';
       setQtyVal(amt);
       input.value = amt;
     }, 2000);
@@ -48,10 +51,10 @@ export default function CartItem({ id, name, price, img, amt }) {
   };
 
   useEffect(() => {
-    if (itemStock < 5) {
+    if (itemStock < 5 || itemStock - qtyVal < 5) {
       setLowStock(true);
     }
-  }, []);
+  });
 
   return (
     <div className='cartItem'>
@@ -78,7 +81,7 @@ export default function CartItem({ id, name, price, img, amt }) {
           </div>
           {lowStock && (
             <p id={`lowStockNote${id}`} className='lowStockNote'>
-              Only {itemStock} remaining
+              Stock: {itemStock}
             </p>
           )}
         </div>

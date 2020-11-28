@@ -75,7 +75,7 @@ const coffeeStock = [
     roast: 'Light',
     aroma: 'Ripe berries, rich nougat, brown sugar.',
     notes: 'Juicy red fruit acidity paired with a creamy honey body.',
-    itemStock: 1,
+    itemStock: 0,
   },
   {
     id: 2,

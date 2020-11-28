@@ -11,8 +11,6 @@ import { useGlobalContext } from '../context';
 
 const getCartTotal = (id, cart) => {
   let item = cart.filter((cartItem) => cartItem.id === id);
-  console.log('ITEM');
-  console.log(item);
   if (item[0]) {
     return item[0].amt;
   } else {
@@ -46,10 +44,14 @@ export default function SingleCoffee({
     let note = document.querySelector(`#lowStockNote${id}`);
 
     input.style.border = '1px solid red';
-    note.style.color = 'red';
+    if (note) {
+      note.style.color = 'red';
+    }
     setTimeout(() => {
-      input.style.border = '1px solid blue';
-      input.value = 0;
+      if (note) {
+        note.style.color = '#363b3b';
+      }
+      input.style.border = '1px solid #4481a6';
     }, 2000);
   };
 
@@ -68,7 +70,6 @@ export default function SingleCoffee({
   };
 
   const incQtyVal = () => {
-    console.log(cartTotal);
     if (qtyVal < itemStock - cartTotal) {
       setQtyVal(qtyVal + 1);
     } else {
@@ -145,6 +146,7 @@ export default function SingleCoffee({
             <input
               id={`qtyInput${id}`}
               className={`qtyInput`}
+              disabled={itemStock > 0 ? false : true}
               type='number'
               value={qtyVal}
               onChange={handleChange}
@@ -161,18 +163,16 @@ export default function SingleCoffee({
         </div>
         {lowStock && (
           <p id={`lowStockNote${id}`} className='lowStockNote'>
-            Only {itemStock} remaining!
+            Stock: {itemStock}
           </p>
         )}
-        {cartTotal > 0 && <p className='lowStockNote'>{cartTotal} in cart.</p>}
-        {/* <p
-          id={`lowStockNote${id}`}
-          className={lowStock ? `lowStockNote` : 'lowStockNote hidden'}
-        >
-          Only {itemStock} remaining!
-        </p> */}
+        {cartTotal > 0 && <p className='lowStockNote'>In Cart:{cartTotal}</p>}
 
-        <button className='addCartBtn' onClick={(e) => addtoCart()}>
+        <button
+          className='addCartBtn'
+          disabled={itemStock > 0 ? false : true}
+          onClick={(e) => addtoCart()}
+        >
           Add To Cart
         </button>
       </div>
