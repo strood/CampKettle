@@ -1,34 +1,24 @@
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faWater,
-  faDove,
-  faPaw,
-  faMountain,
-  faSun,
-  faFireAlt,
-  faGlobe,
-  faPlusSquare,
-  faMinusSquare,
-} from '@fortawesome/free-solid-svg-icons';
+import { useGlobalContext } from '../context';
 
 export default function CartItem({ id, name, price, img, amt }) {
+  const { toggleAmount, toggleModal } = useGlobalContext();
   const [qtyVal, setQtyVal] = useState(amt);
+
+  const className = img.prefix + '-' + img.iconName;
+
   const handleChange = (e) => {
     setQtyVal(e.target.value);
   };
 
-  const updateCartItem = (e, newVal) => {
-    if (newVal < 0) {
-      newVal = 0;
-    }
-    console.log('update this item to this value');
-    console.log(e);
-    console.log(newVal);
-    console.log('===========================');
+  const removeItem = () => {
+    toggleModal(true, 'remove', id);
+  };
+  const setQty = () => {
+    toggleAmount(id, 'set', name, price, img, parseInt(qtyVal));
   };
 
-  const className = img.prefix + '-' + img.iconName;
   return (
     <div className='cartItem'>
       <div className={`cartItemImgDiv ${className}`}>
@@ -38,17 +28,17 @@ export default function CartItem({ id, name, price, img, amt }) {
         <div className='cartNameDiv'>
           <h4>{name}</h4>
           <hr />
-          <button onClick={(e) => updateCartItem(e, 0)}>Remove</button>
+          <button onClick={() => removeItem(id)}>Remove</button>
         </div>
         <div className='cartQtyDiv'>
           <label htmlFor='qtyInput'>Qty:</label>
           <input
             className='qtyInput'
-            type='text'
-            placeholder={qtyVal}
+            type='number'
+            value={qtyVal}
             onChange={handleChange}
           />
-          <button onClick={(e) => updateCartItem(e, qtyVal)}>Update</button>
+          <button onClick={() => setQty()}>Update</button>
         </div>
         <div className='cartItemPrice'>
           <div>

@@ -2,9 +2,11 @@ import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
+import { useGlobalContext } from '../context';
 
 export default function Navbar() {
   const [showDropList, setShowDropList] = useState(false);
+  const { amount } = useGlobalContext();
   return (
     <>
       <nav>
@@ -20,7 +22,10 @@ export default function Navbar() {
           </NavLink>
 
           <NavLink to='/cart' activeClassName='selected'>
-            <li>Cart</li>
+            <li>
+              Cart
+              {amount > 0 && <div className='cartNotifyDot'>{amount}</div>}
+            </li>
           </NavLink>
         </ul>
         <div className='menuIconDiv'>
@@ -30,6 +35,7 @@ export default function Navbar() {
               setShowDropList(!showDropList);
             }}
           />
+          {amount > 0 && <div className='cartNotifyDot'>{amount}</div>}
         </div>
 
         <div className='fillerDiv'></div>
@@ -46,7 +52,10 @@ export default function Navbar() {
           <li>Coffee</li>
         </NavLink>
         <NavLink to='/cart' activeClassName='selected'>
-          <li>Cart</li>
+          <li>
+            Cart
+            {amount > 0 && <div className='cartNotifyDot'>{amount}</div>}
+          </li>
         </NavLink>
       </ul>
     </>

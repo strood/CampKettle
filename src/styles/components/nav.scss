@@ -75,6 +75,28 @@ nav {
   flex-grow: 1;
 }
 
+.cartNotifyDot {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+  border-radius: 50%;
+
+  position: relative;
+  bottom: 0.6em;
+  color: white;
+  background-color: $blue;
+  text-decoration: none;
+  padding: 0.5em 0.23em 0.5em 0.6em;
+  &:hover {
+    text-decoration: none;
+  }
+  p {
+    text-decoration: none;
+    padding-left: 1em;
+  }
+}
+
 @media screen and (max-width: 850px) {
   .navList {
     display: none;
@@ -84,6 +106,11 @@ nav {
   }
   .menuIconDiv {
     display: flex;
+  }
+  .cartNotifyDot {
+    // padding: 0.5em 0.6em 0.5em 0em;
+    margin-left: 0.5em;
+    margin-bottom: 0.5em;
   }
 }
 

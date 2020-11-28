@@ -1,17 +1,13 @@
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
-  faWater,
-  faDove,
-  faPaw,
-  faMountain,
-  faSun,
   faFireAlt,
   faGlobe,
   faPlusSquare,
   faMinusSquare,
 } from '@fortawesome/free-solid-svg-icons';
-import { faPagelines } from '@fortawesome/free-brands-svg-icons';
+
+import { useGlobalContext } from '../context';
 
 export default function SingleCoffee({
   id,
@@ -22,15 +18,36 @@ export default function SingleCoffee({
   roast,
   aroma,
   notes,
-  amount,
-  color,
+  stock,
 }) {
-  const [qtyVal, setQtyVal] = useState('0');
+  const { toggleAmount, setModalStatus, toggleModal } = useGlobalContext();
+  const [qtyVal, setQtyVal] = useState(0);
+
   const handleChange = (e) => {
+    console.log(e.target.value);
     setQtyVal(e.target.value);
   };
-  const addtoCart = (e) => {
-    console.log(e);
+
+  const addtoCart = () => {
+    console.log(typeof qtyVal);
+    if (qtyVal > 0) {
+      toggleAmount(id, 'add', name, price, img, parseInt(qtyVal));
+      toggleModal(true, 'added');
+      // setModalStatus(true);
+    }
+    setQtyVal(0);
+  };
+
+  const incQtyVal = () => {
+    setQtyVal(qtyVal + 1);
+  };
+
+  const decQtyVal = () => {
+    if (qtyVal > 0) {
+      setQtyVal(qtyVal - 1);
+    } else {
+      setQtyVal(0);
+    }
   };
 
   const className = img.prefix + '-' + img.iconName;
@@ -86,21 +103,21 @@ export default function SingleCoffee({
           <div className='qtyInputDiv'>
             <input
               className='qtyInput'
-              type='text'
-              placeholder={qtyVal}
+              type='number'
+              value={qtyVal}
               onChange={handleChange}
             />
             <div className='qtyBtnDiv'>
-              <button className='qtyPlusBtn'>
+              <button className='qtyPlusBtn' onClick={() => incQtyVal()}>
                 <FontAwesomeIcon icon={faPlusSquare} />
               </button>
-              <button className='qtyMinusBtn'>
+              <button className='qtyMinusBtn' onClick={() => decQtyVal()}>
                 <FontAwesomeIcon icon={faMinusSquare} />
               </button>
             </div>
           </div>
         </div>
-        <button className='addCartBtn' onClick={(e) => addtoCart(e)}>
+        <button className='addCartBtn' onClick={(e) => addtoCart()}>
           Add To Cart
         </button>
       </div>

@@ -7,6 +7,7 @@ import Home from './pages/Home';
 import Cart from './pages/Cart';
 import AllCoffee from './pages/AllCoffee';
 import Error from './pages/Error';
+import Modal from './components/Modal';
 
 // import components
 
@@ -15,6 +16,7 @@ import ScrollToTop from './components/ScrollToTop';
 function App() {
   return (
     <Router>
+      <Modal />
       <ScrollToTop />
       <Switch>
         <Route exact path='/'>
