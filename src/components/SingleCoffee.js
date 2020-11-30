@@ -145,7 +145,7 @@ export default function SingleCoffee({
           <div className='qtyInputDiv'>
             <input
               id={`qtyInput${id}`}
-              className={`qtyInput`}
+              className={`qtyInput input`}
               disabled={itemStock > 0 ? false : true}
               type='number'
               value={qtyVal}

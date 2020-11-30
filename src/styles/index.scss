@@ -37,6 +37,12 @@ body {
   }
 }
 
+.input {
+  height: 2.5em;
+  border: 1px solid $blue;
+  border-radius: 0.3em;
+}
+
 #root {
   display: flex;
   flex-direction: column;

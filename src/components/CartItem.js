@@ -72,7 +72,7 @@ export default function CartItem({ id, name, price, img, amt }) {
             <label htmlFor='qtyInput'>Qty:</label>
             <input
               id={`qtyInput${id}`}
-              className='qtyInput'
+              className='qtyInput input'
               type='number'
               value={qtyVal}
               onChange={handleChange}

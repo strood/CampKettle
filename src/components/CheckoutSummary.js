@@ -19,7 +19,12 @@ export default function CheckoutSummary() {
       })}
       <hr />
       <form onSubmit={(e) => handleCouponSubmit(e)} className='couponForm'>
-        <input type='text' placeholder=' Gift card or discount code' />{' '}
+        <input
+          type='text'
+          className='input'
+          placeholder='Gift card or discount code'
+          required
+        />
         <button className='btn' type='submit'>
           Apply
         </button>
