@@ -1,0 +1,173 @@
+@import '../vars';
+
+// Main Page Divs
+.checkoutContainer {
+  display: flex;
+  width: 100%;
+}
+
+.checkoutInfoDiv {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex: 3;
+  margin-right: 1em;
+}
+
+.checkoutSummaryDiv {
+  flex: 2;
+  flex-direction: column;
+  border-left: 1px solid $blue;
+  justify-content: center;
+  align-items: center;
+}
+
+// Info Div Items
+
+.trailList {
+  display: flex;
+  width: 95%;
+  flex-wrap: none;
+  font-size: 15px;
+  justify-content: space-around;
+  padding: 1em;
+  .information {
+    color: black;
+  }
+  .shipping {
+    color: $grey;
+  }
+  .payment {
+    color: $grey;
+  }
+  a {
+    .payment,
+    .shipping,
+    .information {
+      color: $blue;
+    }
+  }
+}
+
+.collapseSummaryToggle {
+  display: flex;
+  justify-content: center;
+  margin-top: 1em;
+  color: $blue;
+  &:hover {
+    cursor: pointer;
+  }
+  p {
+    color: $blue;
+  }
+  .fa-shopping-cart {
+    margin-right: 1em;
+  }
+}
+
+//Summay Div Items
+.summaryItem {
+  display: flex;
+  height: 4.5em;
+  border: 0.1em solid lightblue;
+  border-radius: 0.3em;
+  padding: 0.2em;
+  margin: 0.2em;
+  align-items: center;
+}
+.summaryItemImgDiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 25px;
+  border-radius: 50%;
+  border: 2px solid;
+  height: 1.5em;
+  width: 1.5em;
+  margin: 0.2em;
+  align-self: flex-start;
+}
+
+.summaryAmtDot {
+  display: flex;
+  justify-content: center;
+  align-self: flex-start;
+  align-items: center;
+  font-size: 12px;
+  border-radius: 50%;
+  width: 1em;
+  height: 1em;
+  position: relative;
+  top: 0;
+  left: -8px;
+  color: white;
+  background-color: $blue;
+  text-decoration: none;
+  padding: 0.5em 0.23em 0.5em 0.6em;
+}
+.summaryItemInfoDiv {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 95%;
+  width: 80%;
+  font-size: 15px;
+  h4 {
+    color: $grey;
+  }
+  h3 {
+    font-size: 13px;
+    align-self: flex-start;
+    display: flex;
+  }
+}
+
+.checkoutSummaryHolder {
+  display: flex;
+  flex-direction: column;
+  margin-left: 1em;
+}
+.couponForm {
+  display: flex;
+}
+.subtotalDiv,
+.shippingDiv,
+.summaryTotalDiv {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  p {
+    margin: 0.3em 0em;
+    padding: 0;
+  }
+}
+
+@media screen and (min-width: 950px) {
+  .collapseSummary {
+    display: none;
+  }
+}
+@media screen and (max-width: 950px) {
+  .checkoutSummaryDiv {
+    display: none;
+  }
+  .trailList {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .checkoutSummaryDiv,
+  .checkoutContainer,
+  .checkoutInfoDiv {
+    width: 95%;
+  }
+  .trailList {
+    flex-direction: column;
+  }
+
+  .fa-shopping-cart {
+    display: none;
+  }
+}

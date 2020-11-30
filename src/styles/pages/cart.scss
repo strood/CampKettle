@@ -5,17 +5,6 @@
   flex-direction: column;
   justify-content: space-around;
   min-height: 19.5em;
-  button {
-    font-size: 18px;
-    border: 1px solid $grey;
-    padding: 0.5em;
-    border-radius: 0.2em;
-    margin-bottom: 2em;
-    &:hover {
-      background-color: $blue;
-      color: white;
-    }
-  }
 }
 
 .cartItem {
@@ -82,8 +71,9 @@
     background-color: $darkWhite;
     margin-left: 1em;
     font-size: 15px;
+    text-decoration: underline;
+
     &:hover {
-      text-decoration: underline;
       color: $blue;
     }
   }
@@ -161,17 +151,6 @@
   display: flex;
   width: 100%;
   justify-content: flex-end;
-  button {
-    font-size: 18px;
-    border: 1px solid $grey;
-    padding: 0.5em;
-    border-radius: 0.2em;
-    margin-bottom: 2em;
-    &:hover {
-      background-color: $blue;
-      color: white;
-    }
-  }
 }
 
 @media screen and (max-width: 950px) {

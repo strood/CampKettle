@@ -5,6 +5,8 @@ import HeaderImg from '../components/HeaderImg';
 import Footer from '../components/Footer';
 import HeaderDiv from '../components/HeaderDiv';
 import SingleCoffee from '../components/SingleCoffee';
+import { faArrowUp } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { useGlobalContext } from '../context';
 
@@ -22,6 +24,10 @@ export default function AllCoffee() {
             {stock.map((coffee) => {
               return <SingleCoffee key={coffee.id} {...coffee} />;
             })}
+            <a className='backToTop' href='#'>
+              <FontAwesomeIcon icon={faArrowUp} />
+              Back To Top
+            </a>
           </article>
         </div>
       </main>

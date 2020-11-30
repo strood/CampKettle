@@ -169,7 +169,7 @@ export default function SingleCoffee({
         {cartTotal > 0 && <p className='lowStockNote'>In Cart:{cartTotal}</p>}
 
         <button
-          className='addCartBtn'
+          className='addCartBtn btn'
           disabled={itemStock > 0 ? false : true}
           onClick={(e) => addtoCart()}
         >

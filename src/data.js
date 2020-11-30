@@ -122,7 +122,7 @@ const coffeeStock = [
     aroma: 'Condensed sugar cane and cocoa powder.',
     notes:
       'Rich, dark chocolate, cacao nibs, brown sugar and roasted hazelnut.',
-    itemStock: 7,
+    itemStock: 4,
   },
   {
     id: 6,

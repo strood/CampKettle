@@ -4,6 +4,8 @@ import Navbar from '../components/Navbar';
 import HeaderImg from '../components/HeaderImg';
 import Footer from '../components/Footer';
 import HeaderDiv from '../components/HeaderDiv';
+import { faArrowUp } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import img from '../img/warming-hands-on-campfire-coffee.jpg';
 
@@ -60,6 +62,10 @@ export default function Story() {
               Burst
             </a>
             <p></p>
+            <a className='backToTop' href='#'>
+              <FontAwesomeIcon icon={faArrowUp} />
+              Back To Top
+            </a>
           </article>
         </div>
       </main>

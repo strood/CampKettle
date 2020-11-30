@@ -35,7 +35,7 @@ export default function reducer(state, action) {
         }
         return cartItem;
       })
-      .filter((cartItem) => cartItem.amount !== 0);
+      .filter((cartItem) => cartItem.amt !== 0);
 
     //If not present in cart
     if (!isInCart) {
