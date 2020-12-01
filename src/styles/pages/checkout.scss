@@ -4,6 +4,8 @@
 .checkoutContainer {
   display: flex;
   width: 100%;
+  align-self: center;
+  justify-content: center;
 }
 
 .checkoutInfoDiv {
@@ -28,7 +30,6 @@
 .trailList {
   display: flex;
   width: 95%;
-  flex-wrap: none;
   font-size: 15px;
   justify-content: space-around;
   padding: 1em;
@@ -76,7 +77,7 @@
   .input {
     display: flex;
     margin: 0.3em 0em;
-    // border: 1px dotted $blue;
+    border: 1px solid $blue;
   }
   div {
     display: flex;
@@ -102,6 +103,11 @@
   justify-content: space-between;
   width: 100%;
   margin: 1em 0em;
+  .rtnCart {
+    &:hover {
+      color: $blue;
+    }
+  }
 }
 
 //Summay Div Items
@@ -186,12 +192,12 @@
   }
 }
 
-@media screen and (min-width: 950px) {
+@media screen and (min-width: 1054px) {
   .collapseSummary {
     display: none;
   }
 }
-@media screen and (max-width: 950px) {
+@media screen and (max-width: 1054px) {
   .checkoutSummaryDiv {
     display: none;
   }

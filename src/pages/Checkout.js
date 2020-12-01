@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import Navbar from '../components/Navbar';
 import HeaderImg from '../components/HeaderImg';
@@ -6,7 +6,7 @@ import Footer from '../components/Footer';
 import HeaderDiv from '../components/HeaderDiv';
 import CheckoutSummary from '../components/CheckoutSummary';
 import { useGlobalContext } from '../context';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import {
   faShoppingCart,
   faArrowUp,
@@ -14,13 +14,65 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
+const getSavedUser = () => {
+  let userDetails = localStorage.getItem('userDetails');
+  if (userDetails) {
+    userDetails = JSON.parse(userDetails);
+    return userDetails;
+  } else {
+    return {
+      firstName: '',
+      lastName: '',
+      email: '',
+      phone: '',
+      company: '',
+      addressPrimary: '',
+      addressSecondary: '',
+      city: '',
+      country: '',
+      state: '',
+      zipcode: '',
+      saveInfo: true,
+    };
+  }
+};
+
 export default function Checkout() {
   const { cart, total } = useGlobalContext();
   const [showDropList, setShowDropList] = useState(false);
+  const [user, setUser] = useState(getSavedUser);
+  let history = useHistory();
+
+  useEffect(() => {
+    // On new user info submit, either save or wipe localstorage based on choice
+    if (user.saveInfo) {
+      localStorage.setItem('userDetails', JSON.stringify(user));
+    } else {
+      localStorage.removeItem('userDetails');
+    }
+  }, [user]);
 
   const handleContactSubmit = (e) => {
     e.preventDefault();
-    console.log(e.target);
+    const inputs = Object.values(e.target.elements);
+    let userInfo = {};
+    inputs.forEach((input) => {
+      if (input.className === 'input') {
+        userInfo[input.id] = input.value;
+      }
+      if (input.id === 'saveInfo') {
+        userInfo['saveInfo'] = input.checked;
+      }
+    });
+
+    setUser(userInfo);
+    if (userInfo.saveInfo) {
+      localStorage.setItem('userDetails', JSON.stringify(userInfo));
+    } else {
+      localStorage.removeItem('userDetails');
+    }
+
+    history.push('/shipping');
   };
 
   return (
@@ -74,81 +126,109 @@ export default function Checkout() {
                   <div>
                     <input
                       type='text'
+                      id='firstName'
                       className='input'
                       placeholder='First Name'
+                      defaultValue={user.firstName}
                       required
                     />
                     <input
                       type='text'
+                      id='lastName'
                       className='input'
                       placeholder='Last Name'
+                      defaultValue={user.lastName}
                       required
                     />
                   </div>
                   <input
                     type='email'
+                    id='email'
                     className='input'
                     placeholder='Email'
+                    defaultValue={user.email}
                     required
                   />
                   <input
                     type='tel'
+                    id='phone'
                     className='input'
                     placeholder='Phone (optional)'
+                    defaultValue={user.phone}
                   />
                   <hr />
                   <h3>Address</h3>
                   <input
                     type='text'
+                    id='company'
                     className='input'
                     placeholder='Company (optional)'
+                    defaultValue={user.company}
                   />
                   <input
                     type='text'
                     className='input'
+                    id='addressPrimary'
                     placeholder='Address'
+                    defaultValue={user.addressPrimary}
                     required
                   />
                   <input
                     type='text'
                     className='input'
+                    id='addressSecondary'
                     placeholder='Apt, suite, ect. (optional)'
+                    defaultValue={user.addressSecondary}
                   />
                   <input
                     type='text'
+                    id='city'
                     className='input'
                     placeholder='City'
+                    defaultValue={user.city}
                     required
                   />
                   <div>
                     <input
                       type='text'
+                      id='country'
                       className='input'
                       placeholder='Country/Region'
+                      defaultValue={user.country}
                       required
                     />
                     <input
                       type='text'
                       className='input'
+                      id='state'
                       placeholder='State/Province'
+                      defaultValue={user.state}
                       required
                     />
                     <input
                       type='text'
                       className='input'
-                      placeholder='Zip/Postal Code'
+                      id='zipcode'
+                      placeholder='Zipcode'
+                      defaultValue={user.zipcode}
                       required
                     />
                   </div>
                   <div className='saveInfoDiv'>
-                    <input type='checkbox' name='saveInfo' id='saveInfo' />
+                    <input
+                      type='checkbox'
+                      name='saveInfo'
+                      id='saveInfo'
+                      defaultChecked={user.saveInfo}
+                    />
+
                     <label htmlFor='saveInfo'>
                       Save this info for next time?
                     </label>
                   </div>
                   <div className='checkoutNav'>
                     <Link to='/cart'>
-                      <p>{'<'}Return to cart</p>
+                      <p className='rtnCart'>{'<'}Return to cart</p>
                     </Link>
 
                     <button type='submit' className='btn'>
