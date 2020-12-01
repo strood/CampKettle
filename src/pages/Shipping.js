@@ -14,15 +14,15 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export default function Shipping() {
-  const { user, setUser } = useGlobalContext();
+  const { user, setUser, adjustShipping } = useGlobalContext();
   const [showDropList, setShowDropList] = useState(false);
   let history = useHistory();
 
   const handleShipUpdate = (e) => {
     if (e.target.id === 'free') {
-      setUser({ ...user, shipping: '0.00' });
+      adjustShipping(0.0);
     } else {
-      setUser({ ...user, shipping: '16.42' });
+      adjustShipping(16.42);
     }
   };
 

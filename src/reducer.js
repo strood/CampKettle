@@ -15,6 +15,10 @@ export default function reducer(state, action) {
     };
   }
 
+  if (action.type === 'ADJUST_SHIPPING') {
+    return { ...state, shipping: action.payload };
+  }
+
   if (action.type === 'ADJUST_AMOUNT') {
     let isInCart = false;
 

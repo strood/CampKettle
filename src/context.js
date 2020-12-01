@@ -13,6 +13,7 @@ const initialState = {
   modalId: 0,
   total: 0,
   amount: 0,
+  shipping: 'TBD',
 };
 
 const getSavedUser = () => {
@@ -34,7 +35,6 @@ const getSavedUser = () => {
       state: '',
       zipcode: '',
       saveInfo: true,
-      shipping: 'TBD',
     };
   }
 };
@@ -44,6 +44,10 @@ const AppProvider = ({ children }) => {
 
   const remove = (id) => {
     dispatch({ type: 'REMOVE', payload: id });
+  };
+
+  const adjustShipping = (newVal) => {
+    dispatch({ type: 'ADJUST_SHIPPING', payload: newVal });
   };
 
   const toggleModal = (val, type, id = 0) => {
@@ -82,6 +86,7 @@ const AppProvider = ({ children }) => {
         ...state,
         remove,
         adjustAmount,
+        adjustShipping,
         toggleModal,
         user,
         setUser,

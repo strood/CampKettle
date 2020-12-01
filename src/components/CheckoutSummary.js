@@ -3,13 +3,19 @@ import SummaryItem from './SummaryItem';
 import { useGlobalContext } from '../context';
 
 export default function CheckoutSummary() {
-  const { cart, total, user } = useGlobalContext();
+  const { cart, total, shipping } = useGlobalContext();
 
   const handleCouponSubmit = (e) => {
     e.preventDefault();
     console.log(e);
   };
 
+  let shippingTotal = null;
+  if (shipping) {
+    shippingTotal = shipping + total;
+  }
+
+  console.log(shippingTotal);
   if (cart.length > 0) {
     return (
       <div className='checkoutSummaryHolder'>
@@ -33,11 +39,29 @@ export default function CheckoutSummary() {
           <p>Subtotal</p> <h5>${total}</h5>
         </div>
         <div className='shippingDiv'>
-          <p>Shipping</p> <p>${user.shipping}</p>
+          {shippingTotal === false ? (
+            <>
+              <p>Shipping</p> <h4>$TBD</h4>
+            </>
+          ) : (
+            <>
+              <>
+                <p>Shipping</p> <h4>${shipping}</h4>
+              </>
+            </>
+          )}
         </div>
         <hr />
         <div className='summaryTotalDiv'>
-          <p>Total</p> <h4>${parseInt(total + user.shipping).toFixed(2)}</h4>
+          {shippingTotal > 0 ? (
+            <>
+              <p>Total</p> <h4>${shippingTotal}</h4>
+            </>
+          ) : (
+            <>
+              <p>Total</p> <h4>${total}</h4>
+            </>
+          )}
         </div>
       </div>
     );
@@ -62,11 +86,29 @@ export default function CheckoutSummary() {
           <p>Subtotal</p> <h5>${total}</h5>
         </div>
         <div className='shippingDiv'>
-          <p>Shipping</p> <p>${user.shipping}</p>
+          {shipping > 0 ? (
+            <>
+              <p>Total</p> <h4>${shipping}</h4>
+            </>
+          ) : (
+            <>
+              <>
+                <p>Total</p> <h4>$TBD</h4>
+              </>
+            </>
+          )}
         </div>
         <hr />
         <div className='summaryTotalDiv'>
-          <p>Total</p> <h4>${parseInt(total + user.shipping).toFixed(2)}</h4>
+          {shippingTotal ? (
+            <>
+              <p>Total</p> <h4>${shippingTotal}</h4>
+            </>
+          ) : (
+            <>
+              <p>Total</p> <h4>${total}</h4>
+            </>
+          )}
         </div>
       </div>
     );

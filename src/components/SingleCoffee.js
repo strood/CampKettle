@@ -6,6 +6,14 @@ import {
   faPlusSquare,
   faMinusSquare,
 } from '@fortawesome/free-solid-svg-icons';
+import {
+  faWater,
+  faDove,
+  faPaw,
+  faMountain,
+  faSun,
+} from '@fortawesome/free-solid-svg-icons';
+import { faPagelines } from '@fortawesome/free-brands-svg-icons';
 
 import { useGlobalContext } from '../context';
 
@@ -32,13 +40,12 @@ export default function SingleCoffee({
   const { adjustAmount, toggleModal, cart } = useGlobalContext();
   const [qtyVal, setQtyVal] = useState(0);
   const [lowStock, setLowStock] = useState(false);
-
   const [cartTotal, setCartTotal] = useState(getCartTotal(id, cart));
 
+  const className = img.prefix + '-' + img.iconName;
   const handleChange = (e) => {
     setQtyVal(e.target.value);
   };
-
   const toggleBadValue = () => {
     let input = document.querySelector(`#qtyInput${id}`);
     let note = document.querySelector(`#lowStockNote${id}`);
@@ -85,8 +92,6 @@ export default function SingleCoffee({
       setQtyVal(0);
     }
   };
-
-  const className = img.prefix + '-' + img.iconName;
 
   useEffect(() => {
     if (itemStock < 5) {
