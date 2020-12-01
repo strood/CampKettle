@@ -92,7 +92,7 @@ export default function CartItem({ id, name, price, img, amt }) {
           </div>
           <div>
             <hr />
-            <h4>${price * amt}</h4>
+            <h4>${(price * amt).toFixed(2)}</h4>
           </div>
         </div>
       </div>

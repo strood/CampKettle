@@ -3,7 +3,7 @@ import SummaryItem from './SummaryItem';
 import { useGlobalContext } from '../context';
 
 export default function CheckoutSummary() {
-  const { cart, total } = useGlobalContext();
+  const { cart, total, user } = useGlobalContext();
 
   const handleCouponSubmit = (e) => {
     e.preventDefault();
@@ -33,11 +33,11 @@ export default function CheckoutSummary() {
           <p>Subtotal</p> <h5>${total}</h5>
         </div>
         <div className='shippingDiv'>
-          <p>Shipping</p> <p>TBD</p>
+          <p>Shipping</p> <p>${user.shipping}</p>
         </div>
         <hr />
         <div className='summaryTotalDiv'>
-          <p>Total</p> <h4>${total}</h4>
+          <p>Total</p> <h4>${parseInt(total + user.shipping).toFixed(2)}</h4>
         </div>
       </div>
     );
@@ -62,11 +62,11 @@ export default function CheckoutSummary() {
           <p>Subtotal</p> <h5>${total}</h5>
         </div>
         <div className='shippingDiv'>
-          <p>Shipping</p> <p>TBD</p>
+          <p>Shipping</p> <p>${user.shipping}</p>
         </div>
         <hr />
         <div className='summaryTotalDiv'>
-          <p>Total</p> <h4>${total}</h4>
+          <p>Total</p> <h4>${parseInt(total + user.shipping).toFixed(2)}</h4>
         </div>
       </div>
     );

@@ -7,6 +7,7 @@ import Home from './pages/Home';
 import Cart from './pages/Cart';
 import AllCoffee from './pages/AllCoffee';
 import Checkout from './pages/Checkout';
+import Shipping from './pages/Shipping';
 import Error from './pages/Error';
 import Modal from './components/Modal';
 
@@ -34,6 +35,9 @@ function App() {
         </Route>
         <Route path='/checkout'>
           <Checkout />
+        </Route>
+        <Route path='/shipping'>
+          <Shipping />
         </Route>
         <Route path='*'>
           <Error />

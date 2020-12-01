@@ -14,43 +14,10 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-const getSavedUser = () => {
-  let userDetails = localStorage.getItem('userDetails');
-  if (userDetails) {
-    userDetails = JSON.parse(userDetails);
-    return userDetails;
-  } else {
-    return {
-      firstName: '',
-      lastName: '',
-      email: '',
-      phone: '',
-      company: '',
-      addressPrimary: '',
-      addressSecondary: '',
-      city: '',
-      country: '',
-      state: '',
-      zipcode: '',
-      saveInfo: true,
-    };
-  }
-};
-
 export default function Checkout() {
-  const { cart, total } = useGlobalContext();
+  const { user, setUser } = useGlobalContext();
   const [showDropList, setShowDropList] = useState(false);
-  const [user, setUser] = useState(getSavedUser);
   let history = useHistory();
-
-  useEffect(() => {
-    // On new user info submit, either save or wipe localstorage based on choice
-    if (user.saveInfo) {
-      localStorage.setItem('userDetails', JSON.stringify(user));
-    } else {
-      localStorage.removeItem('userDetails');
-    }
-  }, [user]);
 
   const handleContactSubmit = (e) => {
     e.preventDefault();
@@ -64,14 +31,14 @@ export default function Checkout() {
         userInfo['saveInfo'] = input.checked;
       }
     });
-
-    setUser(userInfo);
+    userInfo['shipping'] = 'TBD';
     if (userInfo.saveInfo) {
       localStorage.setItem('userDetails', JSON.stringify(userInfo));
     } else {
       localStorage.removeItem('userDetails');
     }
 
+    setUser(userInfo);
     history.push('/shipping');
   };
 
@@ -86,7 +53,7 @@ export default function Checkout() {
             <div className='checkoutContainer'>
               <div className='checkoutInfoDiv'>
                 <h1>Checkout</h1>
-                <ul className='trailList'>
+                <ul className='trailList trailListInfo'>
                   <li className='information'>Information</li>
                   <li className='arrow'>{'>'}</li>
                   <li className='shipping'> Shipping</li>
@@ -157,7 +124,7 @@ export default function Checkout() {
                     defaultValue={user.phone}
                   />
                   <hr />
-                  <h3>Address</h3>
+                  <h3>Shipping Address</h3>
                   <input
                     type='text'
                     id='company'

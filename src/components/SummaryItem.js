@@ -14,7 +14,7 @@ export default function SummaryItem({ id, name, price, img, amt }) {
       <div className='summaryAmtDot'>{amt}</div>
       <div className='summaryItemInfoDiv'>
         <h4>{name}</h4>
-        <h3>${price * amt}</h3>
+        <h3>${(price * amt).toFixed(2)}</h3>
       </div>
     </div>
   );

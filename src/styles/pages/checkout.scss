@@ -33,21 +33,22 @@
   font-size: 15px;
   justify-content: space-around;
   padding: 1em;
-  .information {
-    color: black;
-  }
-  .shipping {
-    color: $grey;
-  }
-  .payment {
-    color: $grey;
-  }
   a {
     .payment,
     .shipping,
     .information {
       color: $blue;
     }
+  }
+}
+.trailListInfo {
+  .information {
+    color: black;
+    font-weight: bold;
+  }
+  .shipping,
+  .payment {
+    color: $grey;
   }
 }
 

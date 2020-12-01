@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useReducer } from 'react';
+import React, { useContext, useEffect, useReducer, useState } from 'react';
 import { getStock, getLocalCart } from './data';
 import reducer from './reducer';
 
@@ -15,8 +15,32 @@ const initialState = {
   amount: 0,
 };
 
+const getSavedUser = () => {
+  let userDetails = localStorage.getItem('userDetails');
+  if (userDetails) {
+    userDetails = JSON.parse(userDetails);
+    return userDetails;
+  } else {
+    return {
+      firstName: '',
+      lastName: '',
+      email: '',
+      phone: '',
+      company: '',
+      addressPrimary: '',
+      addressSecondary: '',
+      city: '',
+      country: '',
+      state: '',
+      zipcode: '',
+      saveInfo: true,
+      shipping: 'TBD',
+    };
+  }
+};
 const AppProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
+  const [user, setUser] = useState(getSavedUser);
 
   const remove = (id) => {
     dispatch({ type: 'REMOVE', payload: id });
@@ -59,6 +83,8 @@ const AppProvider = ({ children }) => {
         remove,
         adjustAmount,
         toggleModal,
+        user,
+        setUser,
       }}
     >
       {children}

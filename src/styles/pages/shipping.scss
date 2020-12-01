@@ -1,0 +1,79 @@
+@import '../vars';
+
+.trailListShip {
+  .shipping {
+    color: black;
+    font-weight: bold;
+  }
+  .payment {
+    color: $grey;
+  }
+  a {
+    .payment,
+    .shipping,
+    .information {
+      color: $blue;
+    }
+  }
+}
+
+.shippingInfoForm {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  h3 {
+    align-self: flex-start;
+    margin-bottom: 1em;
+  }
+  .input {
+    display: flex;
+    margin: 0.3em 0em;
+    border: 1px solid $blue;
+  }
+  .saveInfoDiv {
+    justify-content: flex-start;
+    margin: 0.3em;
+    label {
+      font-size: 14px;
+      margin-left: 0.3em;
+      color: $grey;
+    }
+  }
+}
+
+.infoReviewDiv {
+  div {
+    padding-bottom: 1em;
+    p {
+      margin-bottom: 1em;
+    }
+  }
+  a {
+    color: $blue;
+  }
+}
+
+.shippingOptions {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.shipOpt {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  border: 1px solid $blue;
+  margin: 0.3em;
+  div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    input {
+      margin: 0em 0.5em;
+    }
+  }
+  p {
+    margin-bottom: 0em;
+    padding: 1em;
+  }
+}
