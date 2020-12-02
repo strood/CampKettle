@@ -12,8 +12,18 @@ export default function CheckoutSummary() {
     e.preventDefault();
     console.log(e.target.firstChild.value);
     console.log(coupons);
-    if (coupons.includes(e.target.firstChild.value)) {
-      setCoupon(e.target.firstChild.value);
+    let valid = false;
+    let ref = '';
+    coupons.forEach((coupon) => {
+      if (coupon.code === e.target.firstChild.value) {
+        valid = true;
+        ref = coupon.ref;
+      }
+    });
+
+    //Set coupon if valid
+    if (valid) {
+      setCoupon(ref);
       setValidCoup(true);
       setTimeout(() => {
         setValidCoup(false);

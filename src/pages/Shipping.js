@@ -14,7 +14,7 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export default function Shipping() {
-  const { user, adjustShipping } = useGlobalContext();
+  const { user, adjustShipping, shipping } = useGlobalContext();
   const [showDropList, setShowDropList] = useState(false);
   let history = useHistory();
 
@@ -51,7 +51,7 @@ export default function Shipping() {
     //  setUser(userInfo);
     history.push('/payment');
   };
-
+  console.log(shipping);
   return (
     <>
       <HeaderImg />
@@ -121,26 +121,48 @@ export default function Shipping() {
                   <div className='shippingOptions'>
                     <div className='shipOpt'>
                       <div>
-                        <input
-                          type='radio'
-                          id='free'
-                          name='shipping'
-                          required
-                          onChange={handleShipUpdate}
-                        />
+                        {shipping === 0 ? (
+                          <input
+                            type='radio'
+                            id='free'
+                            name='shipping'
+                            required
+                            onChange={handleShipUpdate}
+                            defaultChecked
+                          />
+                        ) : (
+                          <input
+                            type='radio'
+                            id='free'
+                            name='shipping'
+                            required
+                            onChange={handleShipUpdate}
+                          />
+                        )}
                         <label htmlFor='free'>Standard Shipping</label>
                       </div>
                       <p>Free</p>
                     </div>
                     <div className='shipOpt'>
                       <div>
-                        <input
-                          type='radio'
-                          id='express'
-                          name='shipping'
-                          required
-                          onChange={handleShipUpdate}
-                        />
+                        {shipping === 16.42 ? (
+                          <input
+                            type='radio'
+                            id='express'
+                            name='shipping'
+                            defaultChecked
+                            required
+                            onChange={handleShipUpdate}
+                          />
+                        ) : (
+                          <input
+                            type='radio'
+                            id='express'
+                            name='shipping'
+                            required
+                            onChange={handleShipUpdate}
+                          />
+                        )}
                         <label htmlFor='express'>Express Shipping</label>
                       </div>
                       <p>$16.42</p>
