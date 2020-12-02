@@ -14,7 +14,7 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export default function Shipping() {
-  const { user, setUser, adjustShipping } = useGlobalContext();
+  const { user, adjustShipping } = useGlobalContext();
   const [showDropList, setShowDropList] = useState(false);
   let history = useHistory();
 
@@ -26,7 +26,7 @@ export default function Shipping() {
     }
   };
 
-  console.log(user);
+  // console.log(user);
 
   const handleShippingSubmit = (e) => {
     e.preventDefault();
@@ -98,11 +98,10 @@ export default function Shipping() {
                 <hr />
                 <div className='infoReviewDiv'>
                   <div>
-                    <div>
-                      <p>Contact</p>
-                      <h4>{user.email}</h4>
-                    </div>
+                    <p>Contact</p>
+                    <h4>{user.email}</h4>
                   </div>
+
                   <Link to='/checkout'>Change</Link>
                   <hr />
                   <div>

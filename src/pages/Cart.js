@@ -63,7 +63,7 @@ export default function Cart() {
                   <div className='totalDiv'>
                     <p>Total:</p>
                     <hr />
-                    <h3>${total}</h3>
+                    <h3>${total.toFixed(2)}</h3>
                   </div>
                   <div className='gtyDiv'>
                     <p>

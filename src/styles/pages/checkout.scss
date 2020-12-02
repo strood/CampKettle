@@ -18,6 +18,7 @@
 }
 
 .checkoutSummaryDiv {
+  display: flex;
   flex: 2;
   flex-direction: column;
   border-left: 1px solid $blue;
@@ -179,10 +180,23 @@
   .btn {
     margin-bottom: 1em;
   }
+  .input {
+    margin-right: 0.3em;
+  }
+}
+#coupError {
+  color: red;
+  font-size: 14px;
+}
+#coupSuccess {
+  color: green;
+  font-size: 14px;
 }
 .subtotalDiv,
 .shippingDiv,
+.couponDiv,
 .summaryTotalDiv {
+  width: 95%;
   display: flex;
   justify-content: space-between;
   align-items: center;

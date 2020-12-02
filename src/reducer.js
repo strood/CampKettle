@@ -62,6 +62,24 @@ export default function reducer(state, action) {
     };
   }
 
+  if (action.type === 'SET_COUPON') {
+    let discount = 0.0;
+    switch (action.payload) {
+      case 'free':
+        discount = 1.0;
+        break;
+      case 'ten':
+        discount = 0.1;
+        break;
+      case 'fifteen':
+        discount = 0.15;
+        break;
+      default:
+        break;
+    }
+    return { ...state, coupon: discount };
+  }
+
   if (action.type === 'GET_TOTALS') {
     let { total, amount } = state.cart.reduce(
       (cartTotal, cartItem) => {
@@ -73,7 +91,17 @@ export default function reducer(state, action) {
       },
       { total: 0, amount: 0 }
     );
+
+    if (state.coupon) {
+      total -= state.coupon * total;
+    }
+
+    if (state.shipping !== 'TBD') {
+      console.log('adding shipping!!!');
+      total += state.shipping;
+    }
     total = parseFloat(total.toFixed(2));
+
     return { ...state, total, amount };
   }
   throw new Error('no matching action type');

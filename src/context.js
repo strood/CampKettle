@@ -14,6 +14,7 @@ const initialState = {
   total: 0,
   amount: 0,
   shipping: 'TBD',
+  coupon: false,
 };
 
 const getSavedUser = () => {
@@ -54,6 +55,10 @@ const AppProvider = ({ children }) => {
     dispatch({ type: 'TOGGLE_MODAL', payload: { val, type, id } });
   };
 
+  const setCoupon = (code) => {
+    dispatch({ type: 'SET_COUPON', payload: code });
+  };
+
   const adjustAmount = (id, action, name, price, img, value = 0) => {
     dispatch({
       type: 'ADJUST_AMOUNT',
@@ -80,6 +85,10 @@ const AppProvider = ({ children }) => {
     localStorage.setItem('cart', JSON.stringify(state.cart));
   }, [state.cart]);
 
+  useEffect(() => {
+    dispatch({ type: 'GET_TOTALS' });
+  }, [state.shipping, state.coupon]);
+
   return (
     <AppContext.Provider
       value={{
@@ -87,6 +96,7 @@ const AppProvider = ({ children }) => {
         remove,
         adjustAmount,
         adjustShipping,
+        setCoupon,
         toggleModal,
         user,
         setUser,

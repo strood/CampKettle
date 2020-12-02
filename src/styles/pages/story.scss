@@ -9,11 +9,12 @@
   }
 }
 
-hr {
-  color: $blue;
-  width: 100%;
-  margin-bottom: 2em;
-}
 .bottomHr {
   width: 60%;
+}
+
+.creditDiv {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1em;
 }

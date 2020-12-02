@@ -1,116 +1,90 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import SummaryItem from './SummaryItem';
 import { useGlobalContext } from '../context';
+import coupons from '../config';
 
 export default function CheckoutSummary() {
-  const { cart, total, shipping } = useGlobalContext();
+  const { cart, total, shipping, setCoupon, coupon } = useGlobalContext();
+  const [invalidCoup, setInvalidCoup] = useState(false);
+  const [validCoup, setValidCoup] = useState(false);
 
   const handleCouponSubmit = (e) => {
     e.preventDefault();
-    console.log(e);
+    console.log(e.target.firstChild.value);
+    console.log(coupons);
+    if (coupons.includes(e.target.firstChild.value)) {
+      setCoupon(e.target.firstChild.value);
+      setValidCoup(true);
+      setTimeout(() => {
+        setValidCoup(false);
+      }, 2000);
+    } else {
+      setInvalidCoup(true);
+      setTimeout(() => {
+        setInvalidCoup(false);
+      }, 2000);
+    }
   };
 
-  let shippingTotal = null;
-  if (shipping) {
-    shippingTotal = shipping + total;
-  }
-
-  console.log(shippingTotal);
-  if (cart.length > 0) {
-    return (
+  return (
+    <>
       <div className='checkoutSummaryHolder'>
-        {cart.map((cartItem) => {
-          return <SummaryItem key={cartItem.id} {...cartItem} />;
-        })}
-        <hr />
-        <form onSubmit={(e) => handleCouponSubmit(e)} className='couponForm'>
-          <input
-            type='text'
-            className='input'
-            placeholder='Gift card or discount code'
-            required
-          />
-          <button className='btn' type='submit'>
-            Apply
-          </button>
-        </form>
-        <hr />
-        <div className='subtotalDiv'>
-          <p>Subtotal</p> <h5>${total}</h5>
-        </div>
-        <div className='shippingDiv'>
-          {shippingTotal === false ? (
-            <>
-              <p>Shipping</p> <h4>$TBD</h4>
-            </>
-          ) : (
-            <>
-              <>
-                <p>Shipping</p> <h4>${shipping}</h4>
-              </>
-            </>
-          )}
-        </div>
-        <hr />
-        <div className='summaryTotalDiv'>
-          {shippingTotal > 0 ? (
-            <>
-              <p>Total</p> <h4>${shippingTotal}</h4>
-            </>
-          ) : (
-            <>
-              <p>Total</p> <h4>${total}</h4>
-            </>
-          )}
-        </div>
+        {cart.length > 0 ? (
+          cart.map((cartItem) => {
+            return <SummaryItem key={cartItem.id} {...cartItem} />;
+          })
+        ) : (
+          <p>It appears that your cart is currently empty.</p>
+        )}
       </div>
-    );
-  } else {
-    return (
-      <div className='checkoutSummaryHolder'>
-        <p>It appears that your cart is currently empty.</p>
-        <hr />
-        <form onSubmit={(e) => handleCouponSubmit(e)} className='couponForm'>
-          <input
-            type='text'
-            className='input'
-            placeholder='Gift card or discount code'
-            required
-          />
-          <button className='btn' type='submit'>
-            Apply
-          </button>
-        </form>
-        <hr />
-        <div className='subtotalDiv'>
-          <p>Subtotal</p> <h5>${total}</h5>
-        </div>
-        <div className='shippingDiv'>
-          {shipping > 0 ? (
-            <>
-              <p>Total</p> <h4>${shipping}</h4>
-            </>
-          ) : (
-            <>
-              <>
-                <p>Total</p> <h4>$TBD</h4>
-              </>
-            </>
-          )}
-        </div>
-        <hr />
-        <div className='summaryTotalDiv'>
-          {shippingTotal ? (
-            <>
-              <p>Total</p> <h4>${shippingTotal}</h4>
-            </>
-          ) : (
-            <>
-              <p>Total</p> <h4>${total}</h4>
-            </>
-          )}
-        </div>
+      <hr />
+      <form onSubmit={(e) => handleCouponSubmit(e)} className='couponForm'>
+        <input
+          type='text'
+          className='input'
+          placeholder='Gift card or discount code'
+          required
+        />
+        <button className='btn' type='submit'>
+          Apply
+        </button>
+      </form>
+      {invalidCoup && <p id='coupError'>Invalid Coupon</p>}
+      {validCoup && <p id='coupSuccess'>Coupon Applied!</p>}
+      <hr />
+      <div className='subtotalDiv'>
+        {shipping >= 0 ? (
+          <>
+            <p>Subtotal</p> <h5>${(total - shipping).toFixed(2)}</h5>
+          </>
+        ) : (
+          <>
+            <p>Subtotal</p> <h5>${total.toFixed(2)}</h5>
+          </>
+        )}
       </div>
-    );
-  }
+      <div className='shippingDiv'>
+        {shipping < 0 ? (
+          <>
+            <p>Shipping</p> <h5>$TBD</h5>
+          </>
+        ) : (
+          <>
+            <>
+              <p>Shipping</p> <h5>${shipping}</h5>
+            </>
+          </>
+        )}
+      </div>
+      {coupon && (
+        <div className='couponDiv'>
+          <p>Discount</p> <h5>{(coupon * 100).toFixed(2)}%</h5>
+        </div>
+      )}
+      <hr />
+      <div className='summaryTotalDiv'>
+        <p>Total</p> <h5>${total.toFixed(2)}</h5>
+      </div>
+    </>
+  );
 }

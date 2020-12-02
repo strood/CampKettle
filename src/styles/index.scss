@@ -38,6 +38,12 @@ body {
   }
 }
 
+hr {
+  color: $blue;
+  width: 100%;
+  margin-bottom: 2em;
+}
+
 .input {
   height: 2.5em;
   border: 1px solid $blue;
@@ -49,6 +55,7 @@ body {
   flex-direction: column;
   height: 100%;
 }
+
 .hidden {
   display: none;
 }

@@ -62,8 +62,14 @@
 .topInfoDiv {
   display: flex;
   justify-content: space-evenly;
+  flex: 1;
 }
-
+.bottomInfoDiv {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  flex: 2;
+}
 .locationDiv,
 .roastDiv {
   display: flex;
@@ -222,9 +228,12 @@ input[type='number'] {
     margin-bottom: 1em;
   }
   .bottomInfoDiv {
-    display: flex;
-    flex-direction: column;
     align-items: center;
+
+    margin-top: 1em;
+    p {
+      margin-bottom: 1em;
+    }
   }
   .fillDiv {
     display: none;

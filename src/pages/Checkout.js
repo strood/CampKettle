@@ -67,7 +67,7 @@ export default function Checkout() {
                   >
                     <FontAwesomeIcon icon={faShoppingCart} />
                     <p>
-                      {showDropList ? 'Hide' : 'Show'} order Summary{' '}
+                      {showDropList ? 'Hide' : 'Show'} order Summary
                       <FontAwesomeIcon
                         icon={showDropList ? faArrowUp : faArrowDown}
                       />
