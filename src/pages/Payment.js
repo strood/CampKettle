@@ -12,23 +12,25 @@ import {
   faArrowDown,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faCcAmex,
+  faCcMastercard,
+  faBitcoin,
+  faCcVisa,
+  faPaypal,
+} from '@fortawesome/free-brands-svg-icons';
 
-export default function Shipping() {
-  const { user, adjustShipping, shipping } = useGlobalContext();
+export default function Payment() {
+  const { user, shipping } = useGlobalContext();
   const [showDropList, setShowDropList] = useState(false);
-  let history = useHistory();
+  const [paymentError, setPaymentError] = useState(false);
 
-  const handleShipUpdate = (e) => {
-    if (e.target.id === 'free') {
-      adjustShipping(0.0);
-    } else {
-      adjustShipping(16.42);
-    }
-  };
-
-  const handleShippingSubmit = (e) => {
+  const handlePaymentSubmit = (e) => {
     e.preventDefault();
-    history.push('/payment');
+    setPaymentError(true);
+    setTimeout(() => {
+      setPaymentError(false);
+    }, 2000);
   };
 
   return (
@@ -42,14 +44,16 @@ export default function Shipping() {
             <div className='checkoutContainer'>
               <div className='checkoutInfoDiv'>
                 <h1>Checkout</h1>
-                <ul className='trailList trailListShip'>
+                <ul className='trailList trailListPay'>
                   <Link to='/checkout'>
                     <li className='information'>Information</li>
                   </Link>
                   <li className='arrow'>{'>'}</li>
-                  <li className='shipping'> Shipping</li>
+                  <Link to='/shipping'>
+                    <li className='shipping'>Shipping</li>
+                  </Link>
                   <li className='arrow'>{'>'}</li>
-                  <li className='payment'> Payment</li>
+                  <li className='payment'>Payment</li>
                 </ul>
                 <div className='collapseSummary'>
                   <div
@@ -90,70 +94,86 @@ export default function Shipping() {
                     </h4>
                   </div>
                   <Link to='/checkout'>Change</Link>
+                  <hr />
+                  <div>
+                    <p>Shipping Method</p>
+
+                    {shipping === 'TBD' ? (
+                      <h4>None Chosen</h4>
+                    ) : (
+                      <>
+                        {shipping === 0 && <h4>Standard Shipping</h4>}
+                        {shipping === 16.42 && <h4>Express Shipping</h4>}
+                      </>
+                    )}
+                  </div>
+                  <Link to='/shipping'>Change</Link>
                 </div>
                 <hr />
                 <form
-                  className='shippingInfoForm'
-                  onSubmit={(e) => handleShippingSubmit(e)}
+                  className='paymentInfoForm'
+                  onSubmit={(e) => handlePaymentSubmit(e)}
                 >
-                  <h3>Shipping Method</h3>
-                  <div className='shippingOptions'>
-                    <div className='shipOpt'>
+                  <h3>Payment Method</h3>
+                  <div className='paymentOptions'>
+                    <div className='payOpt'>
                       <div>
-                        {shipping === 0 ? (
-                          <input
-                            type='radio'
-                            id='free'
-                            name='shipping'
-                            required
-                            onChange={handleShipUpdate}
-                            defaultChecked
-                          />
-                        ) : (
-                          <input
-                            type='radio'
-                            id='free'
-                            name='shipping'
-                            required
-                            onChange={handleShipUpdate}
-                          />
-                        )}
-                        <label htmlFor='free'>Standard Shipping</label>
+                        <input
+                          type='radio'
+                          id='bitcoin'
+                          name='payment'
+                          required
+                        />
+                        <label htmlFor='bitcoin'>Bitcoin</label>
                       </div>
-                      <p>Free</p>
+                      <div className='pmtIconDiv'>
+                        <FontAwesomeIcon icon={faBitcoin} />
+                      </div>
                     </div>
-                    <div className='shipOpt'>
+                    <div className='payOpt'>
                       <div>
-                        {shipping === 16.42 ? (
-                          <input
-                            type='radio'
-                            id='express'
-                            name='shipping'
-                            defaultChecked
-                            required
-                            onChange={handleShipUpdate}
-                          />
-                        ) : (
-                          <input
-                            type='radio'
-                            id='express'
-                            name='shipping'
-                            required
-                            onChange={handleShipUpdate}
-                          />
-                        )}
-                        <label htmlFor='express'>Express Shipping</label>
+                        <input
+                          type='radio'
+                          id='credit'
+                          name='payment'
+                          required
+                        />
+                        <label htmlFor='credit'>Credit/Debit</label>
                       </div>
-                      <p>$16.42</p>
+                      <div className='pmtIconDiv'>
+                        <FontAwesomeIcon icon={faCcVisa} />
+                        <FontAwesomeIcon icon={faCcMastercard} />
+                        <FontAwesomeIcon icon={faCcAmex} />
+                      </div>
+                    </div>
+                    <div className='payOpt'>
+                      <div>
+                        <input
+                          type='radio'
+                          id='paypal'
+                          name='payment'
+                          required
+                        />
+
+                        <label htmlFor='paypal'>Paypal</label>
+                      </div>
+                      <div className='pmtIconDiv'>
+                        <FontAwesomeIcon icon={faPaypal} />
+                      </div>
                     </div>
                   </div>
+                  {paymentError && (
+                    <p id='pmtErrMsg'>
+                      Sorry, no product actually exists, so we can't let you pay
+                      for it!
+                    </p>
+                  )}
                   <div className='checkoutNav'>
-                    <Link to='/checkout'>
+                    <Link to='/shipping'>
                       <p className='rtnCart'>{'<'}Return</p>
                     </Link>
-
                     <button type='submit' className='btn'>
-                      Continue To Payment
+                      Proceed With Payment
                     </button>
                   </div>
                 </form>

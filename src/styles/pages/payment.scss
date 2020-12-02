@@ -1,0 +1,74 @@
+@import '../vars';
+
+.trailListPay {
+  .payment {
+    color: black;
+    font-weight: bold;
+  }
+}
+.paymentInfoForm {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  h3 {
+    align-self: flex-start;
+    margin-bottom: 1em;
+  }
+  .input {
+    display: flex;
+    margin: 0.3em 0em;
+    border: 1px solid $blue;
+  }
+  .saveInfoDiv {
+    justify-content: flex-start;
+    margin: 0.3em;
+    label {
+      font-size: 14px;
+      margin-left: 0.3em;
+      color: $grey;
+    }
+  }
+}
+.paymentOptions {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.payOpt {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  border: 1px solid $blue;
+  margin: 0.3em;
+  div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    input {
+      margin: 1em 1em;
+    }
+  }
+  p {
+    margin-bottom: 0em;
+    padding: 2em;
+  }
+  .pmtIconDiv {
+    color: $grey;
+    font-size: 30px;
+    margin-right: 0.3em;
+    svg {
+      margin: 0.1em;
+    }
+  }
+}
+
+#pmtErrMsg {
+  color: red;
+}
+@media screen and (max-width: 435px) {
+  .payOpt {
+    .pmtIconDiv {
+      display: none;
+    }
+  }
+}

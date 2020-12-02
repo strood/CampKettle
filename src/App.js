@@ -8,6 +8,7 @@ import Cart from './pages/Cart';
 import AllCoffee from './pages/AllCoffee';
 import Checkout from './pages/Checkout';
 import Shipping from './pages/Shipping';
+import Payment from './pages/Payment';
 import Error from './pages/Error';
 import Modal from './components/Modal';
 
@@ -38,6 +39,9 @@ function App() {
         </Route>
         <Route path='/shipping'>
           <Shipping />
+        </Route>
+        <Route path='/payment'>
+          <Payment />
         </Route>
         <Route path='*'>
           <Error />
