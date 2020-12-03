@@ -1,5 +1,5 @@
-# CampKettle Coffee
+# Camp & Kettle Coffee Co.
 
-CampKettle Coffee website, built using reactjs, react-router, webpack.
+Camp & Kettle Coffee Co. website, built using reactjs, react-router, webpack.
 
-[Live Demo](www.github.com/strood) <-- Check it out!
+[Live Demo](https://camp-kettle.netlify.app/) <-- Check it out!
