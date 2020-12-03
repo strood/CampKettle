@@ -49,9 +49,9 @@ export default function Story() {
               <br />
               <p>
                 As great as it would be to roast coffee inspired by the
-                outdoors, I infact, am not a coffee roaster, nor is Camp &
-                Kettle Coffee a real company. This is actually just a website
-                created with reactjs and react-router by{' '}
+                outdoors, I am not a coffee roaster, nor is Camp & Kettle Coffee
+                a real company. This is actually just a website created with
+                reactjs and react-router by{' '}
                 <a href='https://www.github.com/strood'>Strood</a> You can check
                 out some of my other projects by following the link!
               </p>

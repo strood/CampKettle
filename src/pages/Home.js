@@ -24,8 +24,8 @@ export default function Home() {
               to provide the finest and freshest quality coffee. Inspired by a
               fond love of coffee, and the great outdoors, we roast to bring out
               a distinct, full-bodied profile with every cup. Anytime you find
-              yourself out in natures, one of our six feature beans will make
-              you feel right at home.
+              yourself out in nature, one of our six feature beans will make you
+              feel right at home.
             </p>
           </article>
         </div>
