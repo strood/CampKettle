@@ -170,7 +170,7 @@ export default function Payment() {
                   )}
                   <div className='checkoutNav'>
                     <Link to='/shipping'>
-                      <p className='rtnCart'>{'<'}Return</p>
+                      <p className='rtn'>{'<'}Return</p>
                     </Link>
                     <button type='submit' className='btn'>
                       Proceed With Payment

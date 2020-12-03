@@ -195,7 +195,7 @@ export default function Checkout() {
                   </div>
                   <div className='checkoutNav'>
                     <Link to='/cart'>
-                      <p className='rtnCart'>{'<'}Return to cart</p>
+                      <p className='rtn'>{'<'}Return to cart</p>
                     </Link>
 
                     <button type='submit' className='btn'>

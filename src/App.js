@@ -13,7 +13,6 @@ import Error from './pages/Error';
 import Modal from './components/Modal';
 
 // import components
-
 import ScrollToTop from './components/ScrollToTop';
 
 function App() {

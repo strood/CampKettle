@@ -35,7 +35,7 @@ const config = {
       filename: '[path][base].gz',
       test: /\.(js|html|css)$/,
       // threshold: 780, if not compressing, lower threshold to see in action
-      threshold: 10240,
+      threshold: 780,
       minRatio: 0.8,
       algorithm: 'gzip',
     }),

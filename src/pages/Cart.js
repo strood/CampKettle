@@ -12,7 +12,7 @@ import { faCheck, faArrowUp } from '@fortawesome/free-solid-svg-icons';
 
 export default function Cart() {
   const { cart, total } = useGlobalContext();
-  console.log(cart);
+
   if (cart.length < 1) {
     return (
       <>

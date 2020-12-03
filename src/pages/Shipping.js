@@ -149,7 +149,7 @@ export default function Shipping() {
                   </div>
                   <div className='checkoutNav'>
                     <Link to='/checkout'>
-                      <p className='rtnCart'>{'<'}Return</p>
+                      <p className='rtn'>{'<'}Return</p>
                     </Link>
 
                     <button type='submit' className='btn'>

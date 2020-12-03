@@ -36,7 +36,6 @@
   align-items: center;
   justify-content: space-around;
   flex: 1;
-  //   max-width: 7em;
   hr {
     margin: 0;
     width: 80%;
@@ -166,7 +165,6 @@
   .cartItem {
     height: 20em;
     width: 35em;
-    //   width: 850px;
     justify-content: space-around;
   }
 
@@ -175,13 +173,10 @@
   }
   .cartItemInfoDiv {
     height: auto;
-
     display: flex;
     align-items: center;
     height: 80%;
-    //   flex-direction: column;
     justify-content: space-around;
-    //   flex: 1;
   }
 }
 

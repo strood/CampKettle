@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import SummaryItem from './SummaryItem';
 import { useGlobalContext } from '../context';
 import coupons from '../config';
@@ -10,8 +10,6 @@ export default function CheckoutSummary() {
 
   const handleCouponSubmit = (e) => {
     e.preventDefault();
-    console.log(e.target.firstChild.value);
-    console.log(coupons);
     let valid = false;
     let ref = '';
     coupons.forEach((coupon) => {

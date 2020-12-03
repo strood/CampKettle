@@ -1,3 +1,4 @@
+//root style
 import './styles/index.scss';
 
 //React based imports below

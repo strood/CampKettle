@@ -3,8 +3,6 @@
 .modal {
   position: fixed;
   z-index: 3;
-  // top: 0;
-  // left: 0;
   width: 100%;
   height: 100%;
   background: #0000003a;
@@ -25,10 +23,10 @@
       align-self: center;
       background-color: $darkWhite;
       border: 1px solid $grey;
+      border-radius: 0.3em;
       padding: 1%;
       max-width: 60%;
       h2 {
-        max-width: 60%;
         margin-bottom: 2em;
       }
     }

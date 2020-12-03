@@ -1,4 +1,5 @@
 export default function reducer(state, action) {
+  // Remove item from cart
   if (action.type === 'REMOVE') {
     return {
       ...state,
@@ -6,6 +7,7 @@ export default function reducer(state, action) {
     };
   }
 
+  //Toggle modal state, set type and id
   if (action.type === 'TOGGLE_MODAL') {
     return {
       ...state,
@@ -15,10 +17,12 @@ export default function reducer(state, action) {
     };
   }
 
+  // Update shipping fees
   if (action.type === 'ADJUST_SHIPPING') {
     return { ...state, shipping: action.payload };
   }
 
+  // Change amount(value) of item(id)
   if (action.type === 'ADJUST_AMOUNT') {
     let isInCart = false;
 
@@ -50,9 +54,12 @@ export default function reducer(state, action) {
     return { ...state, cart: tempCart };
   }
 
+  // toggle loading on
   if (action.type === 'LOADING') {
     return { ...state, loading: true };
   }
+
+  //Display items in cart and stock once fetched, toggle loading off
   if (action.type === 'DISPLAY_ITEMS') {
     return {
       ...state,
@@ -62,6 +69,7 @@ export default function reducer(state, action) {
     };
   }
 
+  // Set coupon to amount based on ref
   if (action.type === 'SET_COUPON') {
     let discount = 0.0;
     switch (action.payload) {
@@ -80,6 +88,7 @@ export default function reducer(state, action) {
     return { ...state, coupon: discount };
   }
 
+  // Get cart total number and price
   if (action.type === 'GET_TOTALS') {
     let { total, amount } = state.cart.reduce(
       (cartTotal, cartItem) => {
@@ -91,18 +100,21 @@ export default function reducer(state, action) {
       },
       { total: 0, amount: 0 }
     );
-
+    // include coupon if active
     if (state.coupon) {
       total -= state.coupon * total;
     }
 
+    // include shipping if active
     if (state.shipping !== 'TBD') {
-      console.log('adding shipping!!!');
       total += state.shipping;
     }
+
+    //Make float and fix rouding.
     total = parseFloat(total.toFixed(2));
 
     return { ...state, total, amount };
   }
+  //Error out if no matches
   throw new Error('no matching action type');
 }

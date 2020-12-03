@@ -27,7 +27,6 @@
 }
 
 // Info Div Items
-
 .trailList {
   display: flex;
   width: 95%;
@@ -99,13 +98,14 @@
   }
 }
 
+// Nav at bottom of checout flow
 .checkoutNav {
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 100%;
   margin: 1em 0em;
-  .rtnCart {
+  .rtn {
     &:hover {
       color: $blue;
     }
