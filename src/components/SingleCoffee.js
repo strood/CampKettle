@@ -23,6 +23,7 @@ export default function SingleCoffee({
   name,
   price,
   img,
+  imgName,
   location,
   roast,
   aroma,
@@ -34,7 +35,7 @@ export default function SingleCoffee({
   const [lowStock, setLowStock] = useState(false);
   const [cartTotal, setCartTotal] = useState(getCartTotal(id, cart));
 
-  const className = img.prefix + '-' + img.iconName;
+  // const className = img.prefix + '-' + img.iconName;
 
   const handleChange = (e) => {
     setQtyVal(e.target.value);
@@ -62,7 +63,7 @@ export default function SingleCoffee({
         setLowStock(true);
         toggleBadValue();
       } else {
-        adjustAmount(id, 'add', name, price, img, parseInt(qtyVal));
+        adjustAmount(id, 'add', name, price, img, imgName, parseInt(qtyVal));
         setCartTotal(cartTotal + parseInt(qtyVal));
         toggleModal(true, 'added');
         setQtyVal(0);
@@ -100,9 +101,9 @@ export default function SingleCoffee({
           <h1 className='coffeeName'>{name}</h1>
           <hr />
         </div>
-        <div className='imgHolder'>
-          <div className={`imgDiv ${className}`}>
-            <FontAwesomeIcon icon={img} />
+        <div className={`imgHolder ${imgName}`}>
+          <div className={`imgDiv ${imgName}`}>
+            <img src={`${img}`} className={`${imgName}`} alt='Logo' />
           </div>
         </div>
       </div>

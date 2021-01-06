@@ -59,10 +59,10 @@ const AppProvider = ({ children }) => {
     dispatch({ type: 'SET_COUPON', payload: code });
   };
 
-  const adjustAmount = (id, action, name, price, img, value = 0) => {
+  const adjustAmount = (id, action, name, price, img, imgName, value = 0) => {
     dispatch({
       type: 'ADJUST_AMOUNT',
-      payload: { id, action, name, price, img, value },
+      payload: { id, action, name, price, img, imgName, value },
     });
   };
 

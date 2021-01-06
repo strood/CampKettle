@@ -2,13 +2,11 @@ import React from 'react';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-export default function SummaryItem({ id, name, price, img, amt }) {
-  const className = img.prefix + '-' + img.iconName;
-
+export default function SummaryItem({ id, name, price, img, imgName, amt }) {
   return (
     <div className='summaryItem'>
-      <div className={`summaryItemImgDiv ${className}`}>
-        <FontAwesomeIcon icon={img} />
+      <div className={`summaryItemImgDiv ${imgName}`}>
+        <img src={`${img}`} className={`${imgName}`} alt='Logo' />
       </div>
 
       <div className='summaryAmtDot'>{amt}</div>

@@ -47,8 +47,8 @@ export default function reducer(state, action) {
 
     //If not present in cart
     if (!isInCart) {
-      const { id, name, price, img, value } = action.payload;
-      tempCart = [...tempCart, { id, name, price, img, amt: value }];
+      const { id, name, price, img, imgName, value } = action.payload;
+      tempCart = [...tempCart, { id, name, price, img, imgName, amt: value }];
     }
 
     return { ...state, cart: tempCart };

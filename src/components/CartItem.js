@@ -7,13 +7,11 @@ const getItemStock = (id, stock) => {
   return item[0].itemStock;
 };
 
-export default function CartItem({ id, name, price, img, amt }) {
+export default function CartItem({ id, name, price, img, imgName, amt }) {
   const { adjustAmount, toggleModal, stock } = useGlobalContext();
   const [qtyVal, setQtyVal] = useState(amt);
   const [lowStock, setLowStock] = useState(false);
   const itemStock = getItemStock(id, stock);
-
-  const className = img.prefix + '-' + img.iconName;
 
   const handleChange = (e) => {
     setQtyVal(e.target.value);
@@ -58,8 +56,8 @@ export default function CartItem({ id, name, price, img, amt }) {
 
   return (
     <div className='cartItem'>
-      <div className={`cartItemImgDiv ${className}`}>
-        <FontAwesomeIcon icon={img} />
+      <div className={`cartItemImgDiv ${imgName}`}>
+        <img src={`${img}`} className={`${imgName}`} alt='Logo' />
       </div>
       <div className='cartItemInfoDiv'>
         <div className='cartNameDiv'>
