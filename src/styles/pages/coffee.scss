@@ -21,7 +21,6 @@
 
 // Coffee profile sections
 .coffeeLeft {
-  justify-content: space-around;
   flex: 1;
 }
 .coffeeMid {
@@ -44,15 +43,19 @@
     margin-bottom: 2em;
   }
 }
-.imgHolder {
+.imgDivOuter {
   display: flex;
   flex-direction: column;
-  flex: 3;
+  flex: 2;
+  align-items: center;
+  justify-content: flex-start;
+}
+.imgHolder {
+  display: flex;
   align-items: flex-start;
   border-radius: 50%;
   padding: 1em;
   border: 2px solid;
-  max-height: 87px;
 }
 .imgDiv {
   display: flex;

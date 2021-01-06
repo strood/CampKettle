@@ -101,9 +101,11 @@ export default function SingleCoffee({
           <h1 className='coffeeName'>{name}</h1>
           <hr />
         </div>
-        <div className={`imgHolder ${imgName}`}>
-          <div className={`imgDiv ${imgName}`}>
-            <img src={`${img}`} className={`${imgName}`} alt='Logo' />
+        <div className='imgDivOuter'>
+          <div className={`imgHolder ${imgName}`}>
+            <div className={`imgDiv ${imgName}`}>
+              <img src={`${img}`} className={`${imgName}`} alt='Logo' />
+            </div>
           </div>
         </div>
       </div>

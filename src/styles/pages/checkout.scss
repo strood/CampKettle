@@ -129,10 +129,14 @@
   font-size: 25px;
   border-radius: 50%;
   border: 2px solid;
-  height: 1.5em;
-  width: 1.5em;
+  height: 2em;
+  width: 2em;
   margin: 0.2em;
   align-self: flex-start;
+  .imgDiv {
+    width: 25px;
+    height: 25px;
+  }
 }
 
 .summaryAmtDot {

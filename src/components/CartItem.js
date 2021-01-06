@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useGlobalContext } from '../context';
 
 const getItemStock = (id, stock) => {
@@ -57,7 +56,9 @@ export default function CartItem({ id, name, price, img, imgName, amt }) {
   return (
     <div className='cartItem'>
       <div className={`cartItemImgDiv ${imgName}`}>
-        <img src={`${img}`} className={`${imgName}`} alt='Logo' />
+        <div className='imgDiv'>
+          <img src={`${img}`} className={`${imgName}`} alt='Logo' />
+        </div>
       </div>
       <div className='cartItemInfoDiv'>
         <div className='cartNameDiv'>
