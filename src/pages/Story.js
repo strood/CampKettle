@@ -68,6 +68,10 @@ export default function Story() {
                 Burst
               </a>
               <br />
+              Images from <a href='https://fontawesome.com/'>
+                Fontawesome
+              </a>{' '}
+              <br />
             </div>
             <a className='backToTop' href='#'>
               <FontAwesomeIcon icon={faArrowUp} />
