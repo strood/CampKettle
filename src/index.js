@@ -1,5 +1,7 @@
 //root style
 import './styles/index.scss';
+import 'core-js/stable';
+import 'regenerator-runtime/runtime';
 
 //React based imports below
 import React from 'react';

@@ -1,12 +1,3 @@
-import {
-  faWater,
-  faDove,
-  faPaw,
-  faMountain,
-  faSun,
-} from '@fortawesome/free-solid-svg-icons';
-import { faPagelines } from '@fortawesome/free-brands-svg-icons';
-
 const getLocalCart = () => {
   let cart = localStorage.getItem('cart');
   if (cart) {
@@ -16,11 +7,21 @@ const getLocalCart = () => {
   }
 };
 
-const getStock = () => {
+const getStock = async () => {
   //Just storing a static copy for each person, not actual db fetch to keep live stock.
   // May add api on backend in future
-  let stock = coffeeStock;
-  return stock;
+
+  try {
+    const stock = await fetch('https://www.campkettle.website/api/coffee', {
+      code: 'cors',
+    });
+
+    return [stock];
+  } catch (error) {
+    const err = new Error('Error fetching coffee');
+    err.status = 404;
+    return [];
+  }
 };
 
 const coffeeStock = [
