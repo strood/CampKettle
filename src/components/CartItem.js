@@ -2,11 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { useGlobalContext } from '../context';
 
 const getItemStock = (id, stock) => {
-  let item = stock.filter((item) => item.id === id);
+  let item = stock.filter((item) => item._id === id);
   return item[0].itemStock;
 };
 
-export default function CartItem({ id, name, price, img, imgName, amt }) {
+export default function CartItem({ id, name, price, img, amt }) {
   const { adjustAmount, toggleModal, stock } = useGlobalContext();
   const [qtyVal, setQtyVal] = useState(amt);
   const [lowStock, setLowStock] = useState(false);
@@ -55,9 +55,12 @@ export default function CartItem({ id, name, price, img, imgName, amt }) {
 
   return (
     <div className='cartItem'>
-      <div className={`cartItemImgDiv ${imgName}`}>
+      <div className={`cartItemImgDiv`}>
         <div className='imgDiv'>
-          <img src={`${img}`} className={`${imgName}`} alt='Logo' />
+          <img
+            src={`https://www.campkettle.website/images/${img}.svg`}
+            alt='Logo'
+          />
         </div>
       </div>
       <div className='cartItemInfoDiv'>

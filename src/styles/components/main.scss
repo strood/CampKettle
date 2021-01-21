@@ -10,7 +10,7 @@
 .mainDiv {
   display: flex;
   flex-direction: column;
-  height: 100%;
+  height: max(30em, 100%);
   width: 100%;
   align-items: center;
   background-color: $white;
@@ -24,14 +24,14 @@
   align-items: center;
   text-align: center;
   width: min(80%, 800px);
-  padding: 3em 0em 0em 0em;
+  padding: 3em 0em 3em 0em;
+  min-height: 30em;
 
   h1 {
     margin: 1em;
   }
   p {
     color: $grey;
-    // margin-bottom: 2.5em;
   }
   a {
     &:hover {

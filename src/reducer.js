@@ -3,7 +3,7 @@ export default function reducer(state, action) {
   if (action.type === 'REMOVE') {
     return {
       ...state,
-      cart: state.cart.filter((item) => item.id !== action.payload),
+      cart: state.cart.filter((item) => item.id !== action.payload.id),
     };
   }
 
@@ -47,8 +47,8 @@ export default function reducer(state, action) {
 
     //If not present in cart
     if (!isInCart) {
-      const { id, name, price, img, imgName, value } = action.payload;
-      tempCart = [...tempCart, { id, name, price, img, imgName, amt: value }];
+      const { id, name, price, img, value } = action.payload;
+      tempCart = [...tempCart, { id, name, price, img, amt: value }];
     }
 
     return { ...state, cart: tempCart };

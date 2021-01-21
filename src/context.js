@@ -59,20 +59,25 @@ const AppProvider = ({ children }) => {
     dispatch({ type: 'SET_COUPON', payload: code });
   };
 
-  const adjustAmount = (id, action, name, price, img, imgName, value = 0) => {
+  const adjustAmount = (id, action, name, price, img, value = 0) => {
     dispatch({
       type: 'ADJUST_AMOUNT',
-      payload: { id, action, name, price, img, imgName, value },
+      payload: { id, action, name, price, img, value },
     });
   };
 
-  const fetchData = () => {
+  const fetchData = async () => {
     dispatch({ type: 'LOADING' });
     // const response = await fetch(url);
     // const cart = await response.json();
     // just a local fetch imitation, but generally asyc from external source like above
     const cart = getLocalCart();
-    const stock = getStock();
+    let stock = [];
+    try {
+      stock = await getStock();
+    } catch (error) {
+      stock = [];
+    }
     dispatch({ type: 'DISPLAY_ITEMS', payload: { cart, stock } });
   };
 

@@ -19,11 +19,10 @@ const getCartTotal = (id, cart) => {
 };
 
 export default function SingleCoffee({
-  id,
+  _id,
   name,
   price,
   img,
-  imgName,
   location,
   roast,
   aroma,
@@ -33,17 +32,15 @@ export default function SingleCoffee({
   const { adjustAmount, toggleModal, cart } = useGlobalContext();
   const [qtyVal, setQtyVal] = useState(0);
   const [lowStock, setLowStock] = useState(false);
-  const [cartTotal, setCartTotal] = useState(getCartTotal(id, cart));
-
-  // const className = img.prefix + '-' + img.iconName;
-
+  const [cartTotal, setCartTotal] = useState(getCartTotal(_id, cart));
+  console.log(_id);
   const handleChange = (e) => {
     setQtyVal(e.target.value);
   };
 
   const toggleBadValue = () => {
-    let input = document.querySelector(`#qtyInput${id}`);
-    let note = document.querySelector(`#lowStockNote${id}`);
+    let input = document.querySelector(`#qtyInput${_id}`);
+    let note = document.querySelector(`#lowStockNote${_id}`);
 
     input.style.border = '1px solid red';
     if (note) {
@@ -63,7 +60,7 @@ export default function SingleCoffee({
         setLowStock(true);
         toggleBadValue();
       } else {
-        adjustAmount(id, 'add', name, price, img, imgName, parseInt(qtyVal));
+        adjustAmount(_id, 'add', name, price, img, parseInt(qtyVal));
         setCartTotal(cartTotal + parseInt(qtyVal));
         toggleModal(true, 'added');
         setQtyVal(0);
@@ -102,9 +99,12 @@ export default function SingleCoffee({
           <hr />
         </div>
         <div className='imgDivOuter'>
-          <div className={`imgHolder ${imgName}`}>
-            <div className={`imgDiv ${imgName}`}>
-              <img src={`${img}`} className={`${imgName}`} alt='Logo' />
+          <div className={`imgHolder `}>
+            <div className={`imgDiv `}>
+              <img
+                src={`https://www.campkettle.website/images/${img}.svg`}
+                alt='Logo'
+              />
             </div>
           </div>
         </div>
@@ -146,7 +146,7 @@ export default function SingleCoffee({
           <label htmlFor='qtyInput'>Qty:</label>
           <div className='qtyInputDiv'>
             <input
-              id={`qtyInput${id}`}
+              id={`qtyInput${_id}`}
               className={`qtyInput input`}
               disabled={itemStock > 0 ? false : true}
               type='number'
@@ -164,7 +164,7 @@ export default function SingleCoffee({
           </div>
         </div>
         {lowStock && (
-          <p id={`lowStockNote${id}`} className='lowStockNote'>
+          <p id={`lowStockNote${_id}`} className='lowStockNote'>
             Stock: {itemStock}
           </p>
         )}

@@ -12,6 +12,7 @@ import { useGlobalContext } from '../context';
 
 export default function AllCoffee() {
   const { stock } = useGlobalContext();
+
   return (
     <>
       <HeaderImg />
@@ -22,7 +23,8 @@ export default function AllCoffee() {
           <article className='mainContent'>
             <h1>Our Coffee</h1>
             {stock.map((coffee) => {
-              return <SingleCoffee key={coffee.id} {...coffee} />;
+              console.log(coffee);
+              return <SingleCoffee key={coffee._id} {...coffee} />;
             })}
             <a className='backToTop' href='#'>
               <FontAwesomeIcon icon={faArrowUp} />

@@ -1,11 +1,14 @@
 import React from 'react';
 
-export default function SummaryItem({ id, name, price, img, imgName, amt }) {
+export default function SummaryItem({ id, name, price, img, amt }) {
   return (
     <div className='summaryItem'>
-      <div className={`summaryItemImgDiv ${imgName}`}>
+      <div className={`summaryItemImgDiv `}>
         <div className='imgDiv'>
-          <img src={`${img}`} className={`${imgName}`} alt='Logo' />
+          <img
+            src={`https://www.campkettle.website/images/${img}.svg`}
+            alt='Logo'
+          />
         </div>
       </div>
 

@@ -12,11 +12,11 @@ const getStock = async () => {
   // May add api on backend in future
 
   try {
-    const stock = await fetch('https://www.campkettle.website/api/coffee', {
-      code: 'cors',
-    });
+    const stock = await fetch('https://www.campkettle.website/api/coffee');
+    const parseStock = await stock.json();
+    console.log(parseStock);
 
-    return [stock];
+    return parseStock;
   } catch (error) {
     const err = new Error('Error fetching coffee');
     err.status = 404;
