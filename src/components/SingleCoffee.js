@@ -33,7 +33,7 @@ export default function SingleCoffee({
   const [qtyVal, setQtyVal] = useState(0);
   const [lowStock, setLowStock] = useState(false);
   const [cartTotal, setCartTotal] = useState(getCartTotal(_id, cart));
-  console.log(_id);
+
   const handleChange = (e) => {
     setQtyVal(e.target.value);
   };

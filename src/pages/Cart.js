@@ -47,8 +47,6 @@ export default function Cart() {
               <h1>Your Cart</h1>
               <div className='cartDiv'>
                 {cart.map((cartItem) => {
-                  console.log(cart);
-                  console.log(cartItem);
                   if (cartItem.amt !== 0) {
                     return <CartItem key={cartItem.id} {...cartItem} />;
                   } else {

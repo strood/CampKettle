@@ -14,7 +14,6 @@ const getStock = async () => {
   try {
     const stock = await fetch('https://www.campkettle.website/api/coffee');
     const parseStock = await stock.json();
-    console.log(parseStock);
 
     return parseStock;
   } catch (error) {

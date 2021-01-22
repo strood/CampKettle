@@ -23,7 +23,6 @@ export default function AllCoffee() {
           <article className='mainContent'>
             <h1>Our Coffee</h1>
             {stock.map((coffee) => {
-              console.log(coffee);
               return <SingleCoffee key={coffee._id} {...coffee} />;
             })}
             <a className='backToTop' href='#'>
