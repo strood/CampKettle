@@ -8,14 +8,11 @@ const getLocalCart = () => {
 };
 
 const getStock = async () => {
-  //Just storing a static copy for each person, not actual db fetch to keep live stock.
-  // May add api on backend in future
-
   try {
-    const stock = await fetch('https://www.campkettle.website/api/coffee');
-    const parseStock = await stock.json();
-
-    return parseStock;
+    // const stock = await fetch('https://www.campkettle.website/api/coffee');
+    // const parseStock = await stock.json();
+    // return parseStock;
+    return coffeeStock
   } catch (error) {
     const err = new Error('Error fetching coffee');
     err.status = 404;

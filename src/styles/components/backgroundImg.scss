@@ -2,9 +2,11 @@
   height: 55em;
   width: max(100%, 800px);
   position: fixed;
+  z-index: 1;
 }
 .backgroundImgDiv {
   display: flex;
   width: max(100%, 800px);
   position: fixed;
+  z-index: 1;
 }

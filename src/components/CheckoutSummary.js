@@ -1,18 +1,18 @@
 import React, { useState } from 'react';
 import SummaryItem from './SummaryItem';
 import { useGlobalContext } from '../context';
-import coupons from '../config';
+// import coupons from '../config';
 
 export default function CheckoutSummary() {
   const { cart, total, shipping, setCoupon, coupon } = useGlobalContext();
   const [invalidCoup, setInvalidCoup] = useState(false);
   const [validCoup, setValidCoup] = useState(false);
-
+  const coupons = []
   const handleCouponSubmit = (e) => {
     e.preventDefault();
     let valid = false;
     let ref = '';
-    coupons.forEach((coupon) => {
+    coupons?.forEach((coupon) => {
       if (coupon.code === e.target.firstChild.value) {
         valid = true;
         ref = coupon.ref;
