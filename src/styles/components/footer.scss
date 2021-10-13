@@ -14,6 +14,7 @@ footer {
   flex: 3;
   justify-content: space-around;
   border-right: 2px solid $blue;
+  z-index: 5;
 }
 .contactDiv {
   display: flex;
@@ -35,12 +36,14 @@ footer {
   }
 }
 .socialsDiv {
+  background-color: $white;
   display: flex;
   justify-content: space-around;
   align-items: center;
   color: $grey;
   font-size: 42px;
   flex: 1;
+  z-index: 5;
 }
 
 @media screen and (max-width: 950px) {

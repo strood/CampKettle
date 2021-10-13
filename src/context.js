@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useReducer, useState } from 'react';
-import { getStock, getLocalCart, coffeeStock } from './data';
+import { getStock, getLocalCart } from './data';
 import reducer from './reducer';
 
 const AppContext = React.createContext();
@@ -76,8 +76,7 @@ const AppProvider = ({ children }) => {
     try {
       stock = await getStock();
     } catch (error) {
-      // Fallback coffee stock
-      stock = coffeeStock;
+      stock = [];
     }
     dispatch({ type: 'DISPLAY_ITEMS', payload: { cart, stock } });
   };
