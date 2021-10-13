@@ -101,4 +101,4 @@ const coffeeStock = [
   },
 ];
 
-export { getStock, getLocalCart };
+export { getStock, getLocalCart, coffeeStock };
